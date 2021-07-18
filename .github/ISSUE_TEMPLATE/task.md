@@ -1,3 +1,12 @@
+---
+name: Task
+about: " Create a task to develop the project "
+title: "[TASK] A new task"
+labels: ''
+assignees: ''
+
+---
+
 **Description**
 
 <!--A clear and concise description of what task is.-->
