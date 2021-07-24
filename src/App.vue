@@ -1,6 +1,7 @@
 <template>
-  <div class="app">
+  <div id="app" class="app">
     {{ message }}
+    <i class="fas fa-laugh-wink"></i>
   </div>
 </template>
 
