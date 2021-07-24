@@ -9,7 +9,8 @@
     "build:app": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "build:css": "postcss build src/styles/tailwind.css -o dist/styles.css",
-    "watch": "watch 'npm run build:css' src/styles"
+    "watch": "watch 'npm run build:css' src/styles",
+    "watch:windows": "watch \"npm run build:css\" src/styles"
   },
   "main": "src/main.js",
   "dependencies": {
