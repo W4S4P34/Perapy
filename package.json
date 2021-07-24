@@ -7,10 +7,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build:app": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "build:css": "postcss build src/styles/tailwind.css -o dist/styles.css",
-    "watch": "watch 'npm run build:css' src/styles",
-    "watch:windows": "watch \"npm run build:css\" src/styles"
+    "lint": "vue-cli-service lint"
   },
   "main": "src/main.js",
   "dependencies": {
@@ -19,12 +16,7 @@
     "autoprefixer": "^9",
     "core-js": "^3.6.5",
     "postcss": "^7",
-    "postcss-cli": "^7",
-    "postcss-import": "^12",
-    "postcss-loader": "^6.1.0",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
-    "vue": "^3.0.0",
-    "watch": "^1.0.2"
+    "vue": "^3.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -34,7 +26,8 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0",
-    "vue-cli-plugin-tailwind": "~2.0.6"
+    "vue-cli-plugin-tailwind": "~2.0.6",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2"
   },
   "eslintConfig": {
     "root": true,

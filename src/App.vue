@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="app">
     {{ message }}
   </div>
 </template>
@@ -14,6 +14,8 @@ export default {
 };
 </script>
 
-<style>
-@import url("./../dist/styles.css");
+<style scoped>
+.app {
+  @apply text-center;
+}
 </style>

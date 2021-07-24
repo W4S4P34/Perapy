@@ -1,6 +1,0 @@
-@layer base {
-  #app {
-    @apply flex flex-col flex-nowrap items-center content-center justify-center;
-    @apply text-black;
-  }
-}

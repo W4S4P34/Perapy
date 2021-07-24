@@ -1,15 +1,12 @@
 {
-    "include": [
-      "./src/**/*"
-    ],
-    "compilerOptions": {
-      "baseUrl": ".",
-      "paths": {
-        "~/*": ["src/*"],
-        "components/*":["src/components/*"],
-        "assets/*": ["src/assets/*"],
-        "styles/*": ["src/styles/*"],
-      },
-      "reactNamespace": "h"
-    }
+  "include": ["./src/**/*"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"],
+      "components/*": ["src/components/*"],
+      "assets/*": ["src/assets/*"]
+    },
+    "reactNamespace": "h"
   }
+}
