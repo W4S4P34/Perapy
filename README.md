@@ -26,17 +26,8 @@ npm install
 
 ### Build, compiles and hot-reloads for development
 
-- Open two terminals at a time in VS Code
-- Run this command from one terminal to serve Vue server
-
 ```
 npm run serve
-```
-
-- Run this command from the other one to enable automatically re-build TailwindCSS when there are changes in `src/styles`
-
-```
-npm run watch
 ```
 
 ### Compiles and minifies for production
