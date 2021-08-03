@@ -12,9 +12,7 @@
         <div class="product-description">
           {{ data.description }}
         </div>
-        <div class="product-price">
-          ${{ data.price }}
-        </div>
+        <div class="product-price">${{ data.price }}</div>
       </div>
     </div>
   </a>

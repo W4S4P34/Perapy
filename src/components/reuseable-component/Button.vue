@@ -48,5 +48,4 @@ export default {
   /* Border */
   border: 1px solid rgba(136, 96, 208, 1);
 }
-
 </style>

@@ -32,7 +32,7 @@
 export default {
   name: "CartItem",
   props: ["data"],
-  emits: ['remove'],
+  emits: ["remove"],
   data() {
     return {
       item: { ...this.data },
@@ -58,8 +58,8 @@ export default {
       this.item.quantity -= 1;
     },
     onHandleRemoveProduct() {
-        this.$emit('remove', this.item.id);
-    }
+      this.$emit("remove", this.item.id);
+    },
   },
 };
 </script>

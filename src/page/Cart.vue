@@ -1,22 +1,20 @@
 <template>
-    <div class="page-container">
-        <CartHeading>Cart</CartHeading>
-        <CartList/>
-    </div>
+  <div class="page-container">
+    <CartHeading>Cart</CartHeading>
+    <CartList />
+  </div>
 </template>
 
 <script>
-import CartHeading from '@/components/cart/CartHeading'
-import CartList from '@/components/cart/CartList'
+import CartHeading from "@/components/cart/CartHeading";
+import CartList from "@/components/cart/CartList";
 export default {
-    name: 'CartPage',
-    components: {
-        CartHeading,
-        CartList,
-    }
-}
+  name: "CartPage",
+  components: {
+    CartHeading,
+    CartList,
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

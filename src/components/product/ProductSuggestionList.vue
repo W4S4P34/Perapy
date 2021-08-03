@@ -46,6 +46,5 @@ export default {
   @apply flex flex-row flex-wrap;
 
   @apply px-9 p-7;
-
 }
 </style>

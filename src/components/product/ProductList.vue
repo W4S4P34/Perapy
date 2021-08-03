@@ -34,6 +34,24 @@ export default {
           description: "A beautiful t-bag",
           price: 69,
         },
+        {
+          id: "p4",
+          name: "Bicycle",
+          description: "A beautiful bicycle",
+          price: 64,
+        },
+        {
+          id: "p5",
+          name: "Disc",
+          description: "A beautiful disc",
+          price: 645,
+        },
+        {
+          id: "p6",
+          name: "T-bag",
+          description: "A beautiful t-bag",
+          price: 69,
+        },
       ],
     };
   },

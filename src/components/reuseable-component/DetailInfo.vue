@@ -33,6 +33,7 @@ export default {
   @apply p-6;
 
   /* Font style */
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   @apply font-bold text-xl;
-}</style>
+}
+</style>

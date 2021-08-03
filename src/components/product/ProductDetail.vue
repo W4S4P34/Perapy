@@ -32,7 +32,7 @@
 
 <script>
 import Button from "@/components/reuseable-component/Button";
-import DetailInfo from '@/components/reuseable-component/DetailInfo'
+import DetailInfo from "@/components/reuseable-component/DetailInfo";
 
 export default {
   name: "ProductDetail",
@@ -84,7 +84,7 @@ export default {
 
 .product-info {
   /* Margin */
-  @apply ml-7;
+  @apply ml-16;
 
   /* Font */
   font-family: "Open Sans", sans-serif;
@@ -136,6 +136,4 @@ export default {
   /* Margin */
   @apply mb-2;
 }
-
-
 </style>

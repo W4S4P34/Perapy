@@ -1,41 +1,45 @@
 <template>
-<div class="cart-btn">
-  <i class="fas fa-shopping-cart cart-icon"/>
-</div>
-
+  <div class="cart-btn">
+    <i class="fas fa-shopping-cart cart-icon" />
+  </div>
 </template>
 
 <script>
-import debounce from 'lodash.debounce'
+import debounce from "lodash.debounce";
 export default {
   name: "CartButton",
   created() {
-    this.handleDebounceScroll = debounce(this.changeButtonDisplay, 100)
-    document.addEventListener('scroll',  this.changeButtonDisplay)
+    this.handleDebounceScroll = debounce(this.changeButtonDisplay, 100);
+    document.addEventListener("scroll", this.changeButtonDisplay);
   },
   beforeUnmount() {
-    document.removeEventListener('scroll', this.changeButtonDisplay)
+    document.removeEventListener("scroll", this.changeButtonDisplay);
   },
   methods: {
     changeButtonDisplay() {
-      const button = document.querySelector('.cart-btn')
-      const footer = document.querySelector('.footer')
+      const button = document.querySelector(".cart-btn");
+      const footer = document.querySelector(".footer");
       const rectTop = (el) => {
-        const rect = el.getBoundingClientRect()
-        return rect.top
-      }
+        const rect = el.getBoundingClientRect();
+        return rect.top;
+      };
 
-
-      if((rectTop(button) + document.body.scrollTop) + button.offsetHeight >= (rectTop(footer) + document.body.scrollTop) - 32) {
-        button.style.position = 'absolute'
-        button.style.bottom = '-192px'
+      if (
+        rectTop(button) + document.body.scrollTop + button.offsetHeight >=
+        rectTop(footer) + document.body.scrollTop - 32
+      ) {
+        button.style.position = "absolute";
+        button.style.bottom = "-192px";
       }
-      if(document.body.scrollTop + window.innerHeight < (rectTop(footer) + document.body.scrollTop)) {
-        button.style.position = 'fixed'
-        button.style.bottom = "0px"
+      if (
+        document.body.scrollTop + window.innerHeight <
+        rectTop(footer) + document.body.scrollTop
+      ) {
+        button.style.position = "fixed";
+        button.style.bottom = "0px";
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -79,5 +83,4 @@ export default {
   /* Margin */
   @apply mt-4 mr-1; /* Temporary */
 }
-
 </style>
