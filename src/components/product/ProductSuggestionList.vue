@@ -32,7 +32,7 @@ export default {
           id: "p3",
           name: "T-bag",
           description: "A beautiful t-bag",
-          price: 69,
+          price: 68,
         },
       ],
     };

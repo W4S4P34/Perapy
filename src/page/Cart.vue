@@ -12,7 +12,7 @@ export default {
     name: 'CartPage',
     components: {
         CartHeading,
-        CartList
+        CartList,
     }
 }
 </script>

@@ -34,24 +34,6 @@ export default {
           description: "A beautiful t-bag",
           price: 69,
         },
-        {
-          id: "p4",
-          name: "Dancin'",
-          description: "A beautiful dancer",
-          price: 12,
-        },
-        {
-          id: "p5",
-          name: "WTF",
-          description: "A beautiful swear",
-          price: 132,
-        },
-        {
-          id: "p6",
-          name: "Boog",
-          description: "A beautiful boog",
-          price: 420,
-        },
       ],
     };
   },

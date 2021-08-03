@@ -3,7 +3,7 @@
     <div class="product-item">
       <img
         class="product-img"
-        src="https://sunhouse.com.vn/pic/thumb/large/product/0(112).jpg"
+        src="https://vanphongphamthudaumot.com/wp-content/uploads/2017/05/1466669551002_8915517.jpg"
       />
       <div class="product-info">
         <div class="product-name">
