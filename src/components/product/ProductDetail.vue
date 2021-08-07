@@ -24,15 +24,14 @@
         </div>
       </div>
       <div class="product-price">${{ data.price }}</div>
-      <DetailInfo>Lorem ipsum</DetailInfo>
-      <Button>Add to cart</Button>
+      <Button :class="addToCart">Add to cart</Button>
     </div>
   </div>
 </template>
 
 <script>
 import Button from "@/components/reuseable-component/Button";
-import DetailInfo from "@/components/reuseable-component/DetailInfo";
+
 
 export default {
   name: "ProductDetail",
@@ -48,8 +47,12 @@ export default {
   },
   components: {
     Button,
-    DetailInfo,
   },
+  computed: {
+    addToCart() {
+      return 'add-to-cart'
+    }
+  }
 };
 </script>
 
@@ -92,7 +95,7 @@ export default {
 
 .product-name {
   /* Font style */
-  @apply font-bold text-5xl;
+  @apply font-bold text-4xl;
 
   /* Margin */
   @apply my-2;
@@ -135,5 +138,9 @@ export default {
 
   /* Margin */
   @apply mb-2;
+}
+
+.add-to-cart {
+  @apply relative left-0;
 }
 </style>
