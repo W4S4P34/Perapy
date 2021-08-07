@@ -25,7 +25,9 @@
   </header>
 </template>
 
+
 <script>
+
 export default {
   name: "Navbar",
   data() {
@@ -34,7 +36,9 @@ export default {
     };
   },
 };
+
 </script>
+
 
 <style scoped>
 .navbar {
@@ -155,4 +159,5 @@ export default {
   animation-name: hoverOn;
   animation-duration: 1s;
 }
+
 </style>

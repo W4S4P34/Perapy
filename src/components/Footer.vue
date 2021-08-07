@@ -22,7 +22,9 @@
   </footer>
 </template>
 
+
 <script>
+
 export default {
   name: "Footer",
   data() {
@@ -31,9 +33,12 @@ export default {
     };
   },
 };
+
 </script>
 
+
 <style scoped>
+
 footer {
   /* Background */
   background-image: linear-gradient(
@@ -153,4 +158,5 @@ footer {
   /* Cursor */
   @apply cursor-pointer;
 }
+
 </style>
