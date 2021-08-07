@@ -17,7 +17,7 @@ export default {
   @apply font-bold text-2xl text-white;
 
   /* Background */
-  background-color: rgba(136, 96, 208, 1);
+  background-color: rgba(86, 128, 233, 1);
 
   /* Border */
   border: solid 1px white;

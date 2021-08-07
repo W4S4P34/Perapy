@@ -1,8 +1,13 @@
 <template>
   <div class="cart-list">
-    <div class="inner">
+    <div v-if="cartList.length > 0" class="inner">
       <div v-for="item in cartList" v-bind:key="item.id">
         <CartItem v-bind:data="item" v-on:remove="removeProduct" />
+      </div>
+    </div>
+    <div v-else class="inner-alt">
+      <div class="message">
+        There's nothing here!
       </div>
     </div>
   </div>
@@ -20,7 +25,7 @@ export default {
       cartList: [
         {
           id: "p1",
-          name: "Bicycle",
+          name: "Long Long Long Long Long Product Name",
           quantity: 3,
           price: 64,
         },
@@ -35,6 +40,18 @@ export default {
           name: "Zephyr",
           quantity: 69,
           price: 4,
+        },
+        {
+          id: "p4",
+          name: "Rick",
+          quantity: 31,
+          price: 14.77,
+        },
+        {
+          id: "p5",
+          name: "Rolled",
+          quantity: 32,
+          price: 114,
         },
       ],
     };
@@ -61,13 +78,19 @@ export default {
   @apply mb-16 ml-32;
 
   /* Size */
-  width: 864px;
-  height: 524px;
-  @apply overflow-hidden;
+  width: 1108px;
+  height: 800px;
+  @apply overflow-y-hidden;
 }
 
 .cart-list:hover {
   @apply overflow-y-auto;
+}
+
+.inner {
+  /* Size */
+  width: 1024px;
+  height: inherit;
 }
 
 .cart-list::-webkit-scrollbar {
@@ -83,5 +106,18 @@ export default {
 .cart-list::-webkit-scrollbar-thumb {
   background-color: rgba(196, 196, 196, 1);
   border-radius: 15px;
+}
+
+.inner-alt {
+  /* Margin */
+  @apply mt-20 ml-20;
+
+  /* Text */
+  @apply text-4xl font-semibold;
+  color: rgba(217, 86, 86, 1);
+
+  /* Size */
+  width: 500px;
+  height: inherit;
 }
 </style>

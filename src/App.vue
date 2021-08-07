@@ -2,7 +2,9 @@
   <div id="app" class="app">
     <Navbar />
     <main class="content">
-      <pet-request-list />
+      <!-- <ProductDetail /> -->
+      <cart-button/>
+      <Cart/>
     </main>
     <Footer />
   </div>
@@ -13,22 +15,20 @@
 
 import Navbar from "./components/Navbar.vue";
 import Footer from "./components/Footer.vue";
-// import Cart from "./page/Cart.vue";
+import Cart from "./page/Cart.vue";
 // import ProductDetail from "./page/ProductDetail.vue";
+import CartButton from "./components/ui/CartButton.vue";
 // import ProductList from "./page/ProductList.vue";
-import PetRequestList from './components/petinfo/PetRequestList.vue'
-// import PetRequestCard from './components/petinfo/PetRequestCard.vue'
 
 export default {
   components: {
     Navbar,
     Footer,
     // ProductDetail,
-    // Cart,
+    Cart,
     // ProductList,
-    PetRequestList
-    // PetRequestCard
-  }
+    CartButton,
+  },
 };
 
 </script>
@@ -38,7 +38,7 @@ export default {
 
 /* Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 
 .app {
   @apply overflow-auto;
