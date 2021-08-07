@@ -8,6 +8,11 @@
 import debounce from "lodash.debounce";
 export default {
   name: "CartButton",
+  data() {
+    return {
+      isPositionAbsolute: false,
+    };
+  },
   created() {
     this.handleDebounceScroll = debounce(this.changeButtonDisplay, 100);
     document.addEventListener("scroll", this.changeButtonDisplay);
@@ -16,9 +21,32 @@ export default {
     document.removeEventListener("scroll", this.changeButtonDisplay);
   },
   methods: {
+    getPageHeight() {
+      let pageHeight = 0;
+      const findHighestNode = (nodesList) => {
+        for (let i = nodesList.length - 1; i >= 0; i--) {
+          if (nodesList[i].scrollHeight && nodesList[i].clientHeight) {
+            let elHeight = Math.max(
+              nodesList[i].scrollHeight,
+              nodesList[i].clientHeight
+            );
+            pageHeight = Math.max(pageHeight, elHeight);
+          }
+          if (nodesList[i].childNodes.length) {
+            findHighestNode(nodesList[i].childNodes);
+          }
+        }
+      };
+
+      findHighestNode(document.documentElement.childNodes);
+      return pageHeight;
+    },
+
     changeButtonDisplay() {
       const button = document.querySelector(".cart-btn");
       const footer = document.querySelector(".footer");
+      // const pageHeight = this.getPageHeight();
+      // console.log(pageHeight);
       const rectTop = (el) => {
         const rect = el.getBoundingClientRect();
         return rect.top;
@@ -28,13 +56,20 @@ export default {
         rectTop(button) + document.body.scrollTop + button.offsetHeight >=
         rectTop(footer) + document.body.scrollTop - 32
       ) {
-        button.style.position = "absolute";
-        button.style.bottom = "-192px";
+        if (this.isPositionAbsolute === false) {
+          this.isPositionAbsolute = true;
+          button.style.position = "absolute";
+          button.style.bottom = `${rectTop(button) +
+            document.body.scrollTop +
+            button.offsetHeight -
+            (rectTop(footer) + document.body.scrollTop - 32)}px`;
+        }
       }
       if (
         document.body.scrollTop + window.innerHeight <
         rectTop(footer) + document.body.scrollTop
       ) {
+        this.isPositionAbsolute = false;
         button.style.position = "fixed";
         button.style.bottom = "0px";
       }
@@ -47,7 +82,7 @@ export default {
 .cart-btn {
   /* Position */
   @apply fixed;
-  @apply bottom-0 right-0;
+  @apply right-0;
 
   /* Margin */
   @apply mb-8 mr-8;
@@ -57,7 +92,7 @@ export default {
   height: 64px;
 
   /* Background */
-  background-color: rgba(136, 96, 208, 1);
+  background-color: rgba(86, 128, 233, 1);
 
   /* Rounded */
   @apply rounded-full;
@@ -80,7 +115,6 @@ export default {
   /* Color */
   @apply text-white;
 
-  /* Margin */
-  @apply mt-4 mr-1; /* Temporary */
+  @apply mt-4 ml-3.5;
 }
 </style>
