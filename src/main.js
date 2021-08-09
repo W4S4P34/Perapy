@@ -10,9 +10,10 @@ library.add(fab);
 import { far } from '@fortawesome/free-regular-svg-icons';
 library.add(far);
 import { dom } from "@fortawesome/fontawesome-svg-core";
+import router from './router'
 dom.watch();
 
-const app = createApp(App)
+const app = createApp(App).use(router)
 
 app.component("font-awesome-icon", FontAwesomeIcon);
 
