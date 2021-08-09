@@ -3,16 +3,20 @@
     <div class="product-item">
       <img
         class="product-img"
-        src="https://sunhouse.com.vn/pic/thumb/large/product/0(112).jpg"
+        src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1586998029-outward-hound-puzzle-cube-dog-toy.jpg?crop=0.899xw:1xh;center,top&resize=768:*"
       />
       <div class="product-info">
         <div class="product-name">
           {{ data.name }}
         </div>
-        <div class="product-description">
-          {{ data.description }}
+        <div class="product-rating">
+          <a><i class="fas fa-star"/></a>
+          <div>{{ data.rating }}</div>
         </div>
-        <div class="product-price">${{ data.price }}</div>
+        <div class="product-price">
+          <a><i class="fas fa-dollar-sign"></i></a>
+          <div>{{ data.price }}</div>
+        </div>
       </div>
     </div>
   </a>
@@ -57,7 +61,7 @@ export default {
   @apply block;
 
   /* Margin */
-  @apply m-auto;
+  @apply ml-4 my-auto;
 
   /* Font */
   font-family: "Open Sans", sans-serif;
@@ -68,13 +72,32 @@ export default {
   @apply text-lg font-bold;
 }
 
-.product-description {
+.product-rating {
   /* Font */
-  @apply text-sm font-normal;
+  @apply text-lg font-normal;
+
+  /* Flex */
+  @apply flex flex-row;
+}
+
+.product-rating div {
+  @apply ml-2;
+  @apply text-left;
 }
 
 .product-price {
   /* Font */
-  @apply text-lg font-bold;
+  @apply text-lg font-normal;
+
+  /* Flex */
+  @apply flex flex-row;
+
+  /* Margin */
+  @apply ml-1;
+}
+
+.product-price div {
+  @apply ml-3;
+  @apply text-left;
 }
 </style>
