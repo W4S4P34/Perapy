@@ -64,7 +64,8 @@ export default {
   @apply flex-col;
 
   /* Layout */
-  @apply max-w-max max-h-full;
+  @apply w-11/12;
+  @apply max-h-full;
   @apply justify-between;
   @apply items-center;
   @apply space-y-2;
@@ -95,8 +96,8 @@ export default {
   @apply object-cover;
 
   /* Layout */
-  width: 220;
-  height: 200px;
+  @apply w-full;
+  height: 180px;
 
   /* Shape */
   @apply rounded-2xl;
@@ -135,6 +136,12 @@ export default {
 .information-pet-name {
   /* Size */
   font-size: 24px;
+
+  /* Truncate */
+  @apply truncate;
+
+  /* Break */
+  @apply break-all;
 
   /* Color */
   @apply text-black;

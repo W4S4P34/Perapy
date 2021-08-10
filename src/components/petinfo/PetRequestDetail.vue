@@ -12,27 +12,6 @@
             <div class="pet-detail-data-addition-information">
                 Age: 3 / Breed: Golden Retriever
             </div>
-            <div class="pet-detail-data-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
-            </div>
-
-            <div class="pet-detail-data-certificates">
-                Certificate 1<br/>
-                Certificate 2<br/>
-                Certificate 1<br/>
-                Certificate 2<br/>
-                Certificate 1<br/>
-                Certificate 2<br/>
-                Certificate 1<br/>
-                Certificate 2<br/>
-                Certificate 1<br/>
-                Certificate 2<br/>
-                Certificate 1<br/>
-                Certificate 2<br/>
-                Certificate 1<br/>
-                Certificate 2<br/>
-                Certificate 3
-            </div>
 
             <div class="pet-detail-data-contact-information">
                 <div class="pet-detail-data-contact-owner">
@@ -66,12 +45,28 @@
         </div>
     </div>
 
-    <div class="pet-detail-feedback">
-        <div class="pet-detail-feedback-title">
+    <div class="description-feedback-container">
+        <div class="headings">
+            <Heading
+            :class="[tabs, { active: isDescriptionActive }]"
+            @click="descriptionActive">
+            Description
+            </Heading>
+
+            <div class="divider" />
+
+            <Heading
+            :class="[feedback, tabs, { active: isFeedbackActive }]"
+            @click="feedbackActive">
             Feedback
+            </Heading>
         </div>
-        <div class="pet-detail-feedback-list">
-            Placeholder
+
+        <div v-if="isFeedbackActive">
+            <PetRequestFeedbackList />
+        </div>
+        <div v-else>
+            <PetRequestDescription />
         </div>
     </div>
 
@@ -82,7 +77,7 @@
         <div class="pet-detail-suggestion-content">
             <div class="pet-detail-suggestion-content-1">
                 <img src="..\..\assets\pet-images\pet-1.jpg" alt="">
-                <p>Mary Charlotte</p>
+                <p>Mary CharlotteWithAReallyLongLongLongName</p>
             </div>
             <div class="pet-detail-suggestion-content-2">
                 <img src="..\..\assets\pet-images\pet-1.jpg" alt="">
@@ -101,8 +96,43 @@
 
 <script>
 
+import Heading from "@/components/reuseable-component/Heading";
+import PetRequestFeedbackList from "@/components/petinfo/PetRequestFeedbackList";
+import PetRequestDescription from "@/components/petinfo/PetRequestDescription";
+
 export default {
-  name: "PetRequestDetail"
+  name: "PetRequestDetail",
+  components: {
+    Heading,
+    PetRequestFeedbackList,
+    PetRequestDescription
+  },
+  data() {
+    return {
+      isFeedbackActive: false,
+      isDescriptionActive: true,
+    };
+  },
+  computed: {
+    feedback() {
+      return "feedback";
+    },
+    tabs() {
+      return "tabs";
+    },
+  },
+  methods: {
+    feedbackActive() {
+      console.log("Feedback active");
+      this.isFeedbackActive = true;
+      this.isDescriptionActive = false;
+    },
+    descriptionActive() {
+      console.log("Details active");
+      this.isFeedbackActive = false;
+      this.isDescriptionActive = true;
+    },
+  }
 };
 
 </script>
@@ -149,6 +179,9 @@ export default {
 }
 
 .pet-detail-data-container {
+    /* Flex grow */
+    @apply flex-grow;
+
     /* Size */
     line-height: 1.5;
 
@@ -158,7 +191,7 @@ export default {
 
 .pet-detail-data-name {
     /* Size */
-    font-size: 32px;
+    @apply text-4xl;
 
     /* Style */
     @apply font-bold;
@@ -166,7 +199,7 @@ export default {
 
 .pet-detail-data-addition-information {
     /* Size */
-    font-size: 16px;
+    @apply text-base;
 
     /* Style */
     @apply font-bold;
@@ -174,7 +207,7 @@ export default {
 
 .pet-detail-data-description {
     /* Size */
-    font-size: 14px;
+    @apply text-base;
     
     /* Margin */
     @apply my-4;
@@ -182,7 +215,7 @@ export default {
 
 .pet-detail-data-certificates {
     /* Size */
-    font-size: 14px;
+    @apply text-base;
 
     /* Style */
     @apply font-bold;
@@ -221,7 +254,7 @@ export default {
     @apply flex;
 
     /* Size */
-    font-size: 14px;
+    @apply text-base;
 
     /* Style */
     @apply font-bold;
@@ -230,7 +263,7 @@ export default {
     @apply space-x-3;
 
     /* Margin */
-    @apply my-1;
+    @apply my-3;
 }
 
 .pet-detail-data-request {
@@ -238,7 +271,7 @@ export default {
     @apply appearance-none;
 
     /* Size */
-    font-size: 14px;
+    @apply text-base;
 
     /* Style */
     @apply font-bold;
@@ -250,7 +283,7 @@ export default {
     @apply rounded-2xl;
 
     /* Padding */
-    @apply px-5 pt-2 pb-3;
+    @apply px-5 pt-5 pb-7;
 
     /* Form Properties */
     resize: none;
@@ -258,6 +291,21 @@ export default {
     max-width: 100%;
     height: auto;
     max-height: 50%;
+}
+
+textarea::-webkit-scrollbar {
+    /* Width */
+    width: 8px;
+}
+
+textarea::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 15px;
+}
+
+textarea::-webkit-scrollbar-thumb {
+    background-color: rgba(196, 196, 196, 1);
+    border-radius: 15px;
 }
 
 .pet-detail-data-request-misc {
@@ -270,7 +318,7 @@ export default {
 
 .pet-detail-data-request-status {
     /* Size */
-    font-size: 14px;
+    @apply text-base;
 
     /* Style */
     @apply font-bold;
@@ -278,7 +326,7 @@ export default {
 
 .pet-detail-data-request-button {
     /* Size */
-    font-size: 16px;
+    @apply text-base;
 
     /* Style */
     @apply font-bold;
@@ -300,29 +348,25 @@ export default {
     background-color: #7698ec;
 }
 
-
-.pet-detail-feedback {
+.pet-detail-suggestion {
     /* Margin */
-    @apply my-5;
+    @apply mx-28;
 }
 
-.pet-detail-feedback-title,
 .pet-detail-suggestion-title {
     /* Size */
-    font-size: 32px;
+    @apply text-4xl;
 
     /* Style */
     @apply font-bold;
 }
 
-.pet-detail-feedback-list {
-    /* Layout */
-    @apply h-20;
-}
-
 .pet-detail-suggestion-content {
     /* Display */
     @apply grid sm:grid-cols-2 md:grid-cols-3;
+
+    /* Gap */
+    @apply gap-x-10;
 
     /* Color */
     background-color: #FBF9F9;
@@ -343,8 +387,8 @@ export default {
     /* Display */
     @apply flex;
 
-    /* Space */
-    @apply space-x-3;
+    /* Layout */
+    @apply max-w-full;
 
     /* Alignment */
     @apply text-left;
@@ -360,7 +404,7 @@ export default {
     @apply rounded-2xl;
 
     /* Layout */
-    @apply w-28 h-40;
+    @apply w-36 h-52;
 }
 
 .pet-detail-suggestion-content-1 p,
@@ -369,8 +413,11 @@ export default {
     /* Display */
     @apply flex;
 
+    /* Break */
+    @apply break-all;
+
     /* Size */
-    font-size: 14px;
+    @apply text-base;
 
     /* Style */
     @apply font-bold;
@@ -378,6 +425,55 @@ export default {
     /* Layout */
     @apply justify-center;
     @apply items-center;
+
+    /* Margin */
+    @apply ml-4;
+}
+
+.description-feedback-container {
+    /* Margin */
+    @apply mx-28 mt-14 mb-16;
+}
+
+.headings {
+    /* Display */
+    @apply flex;
+}
+
+.heading {
+    /* Font (Override) */
+    @apply normal-case;
+    
+    /* Size */
+    @apply text-4xl;
+
+    /* Margin */
+    @apply mx-0;
+}
+
+.divider {
+    /* Layout */
+    @apply h-12;
+
+    /* Border */
+    border-left: 2px solid black;
+
+    /* Margin */
+    @apply mx-10;
+}
+
+.tabs {
+    /* Cursor */
+    @apply cursor-pointer;
+    transition: color 0.2s;
+
+    /* Text color */
+    color: rgb(141, 141, 141, 1);
+}
+
+.tabs:hover,
+.active {
+    color: black;
 }
 
 </style>

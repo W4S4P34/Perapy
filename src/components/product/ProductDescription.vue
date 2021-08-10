@@ -22,7 +22,7 @@ export default {
   @apply ml-56 my-10;
 
   /* Width */
-  width: 1250px;
+  @apply w-full;
 
   /* Font */
   font-family: "Open Sans", sans-serif;
