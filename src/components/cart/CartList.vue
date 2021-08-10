@@ -6,9 +6,7 @@
       </div>
     </div>
     <div v-else class="inner-alt">
-      <div class="message">
-        There's nothing here!
-      </div>
+      <img src="../../assets/empty_state.png"/>
     </div>
   </div>
 </template>

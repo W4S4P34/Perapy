@@ -82,7 +82,7 @@ export default {
 .cart-btn {
   /* Position */
   @apply fixed;
-  @apply right-0;
+  @apply bottom-0 right-0;
 
   /* Margin */
   @apply mb-8 mr-8;

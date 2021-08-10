@@ -35,17 +35,14 @@ export default {
 
   /* Text */
   @apply text-white;
+
+  /* Transition */
+  transition: 0.1s
 }
 
 .button:hover,
 .button:active {
-  /* Background */
-  @apply bg-white;
-
-  /* Text */
-  color: rgba(136, 96, 208, 1);
-
-  /* Border */
-  border: 1px solid rgba(136, 96, 208, 1);
+  border: none;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
 }
 </style>
