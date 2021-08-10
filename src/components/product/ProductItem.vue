@@ -1,21 +1,18 @@
 <template>
   <a>
     <div class="product-item">
-      <img
-        class="product-img"
-        src="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1586998029-outward-hound-puzzle-cube-dog-toy.jpg?crop=0.899xw:1xh;center,top&resize=768:*"
-      />
+      <img class="product-img" :src="product.thumbnail" />
       <div class="product-info">
         <div class="product-name">
-          {{ data.name }}
+          {{ product.name }}
         </div>
         <div class="product-rating">
           <a><i class="fas fa-star"/></a>
-          <div>{{ data.rating }}</div>
+          <div>{{ product.rating }}</div>
         </div>
         <div class="product-price">
           <a><i class="fas fa-dollar-sign"></i></a>
-          <div>{{ data.price }}</div>
+          <div>{{ product.price }}</div>
         </div>
       </div>
     </div>
@@ -26,6 +23,11 @@
 export default {
   name: "ProductItem",
   props: ["data"],
+  data: function() {
+    return {
+      product: this.data,
+    };
+  },
 };
 </script>
 
@@ -36,7 +38,7 @@ export default {
   height: 250px;
 
   /* Margin */
-  @apply mx-20 my-16;
+  @apply mx-10 my-16;
 
   /* Cusor */
   @apply cursor-pointer;
@@ -49,10 +51,6 @@ export default {
   width: 200px;
   height: 250px;
 
-  /* Center crop */
-  object-fit: none; /* Do not scale the image */
-  object-position: center; /* Center the image within the element */
-
   border-radius: 100px;
 }
 
@@ -64,12 +62,14 @@ export default {
   @apply ml-4 my-auto;
 
   /* Font */
-  font-family: "Open Sans", sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 
 .product-name {
   /* Font */
   @apply text-lg font-bold;
+
+  @apply mb-2;
 }
 
 .product-rating {

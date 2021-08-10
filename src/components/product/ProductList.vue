@@ -8,6 +8,8 @@
 
 <script>
 import ProductItem from "@/components/product/ProductItem";
+import productData from "@/assets/data/product.json";
+
 export default {
   name: "ProductList",
   components: {
@@ -15,38 +17,7 @@ export default {
   },
   data() {
     return {
-      productList: [
-        {
-          id: "p1",
-          name: "Bicycle",
-          rating: 5,
-          price: 64,
-        },
-        {
-          id: "p2",
-          name: "Disc",
-          rating: 5,
-          price: 645,
-        },
-        {
-          id: "p3",
-          name: "T-bag",
-          rating: 5,
-          price: 69,
-        },
-        {
-          id: "p4",
-          name: "Long Long Long Long Long Long Long Long Long Product Name",
-          rating: 5,
-          price: 64,
-        },
-        {
-          id: "p5",
-          name: "Disc",
-          rating: 5,
-          price: 645,
-        },
-      ],
+      productList: productData,
     };
   },
 };
@@ -55,9 +26,6 @@ export default {
 <style scoped>
 .product-list {
   /* Flex */
-  @apply flex flex-row flex-wrap;
-
-  /* Margin */
-  @apply mt-24 mb-20 ml-8;
+  @apply flex flex-row flex-wrap justify-center;
 }
 </style>

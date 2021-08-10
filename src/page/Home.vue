@@ -4,12 +4,12 @@
 
 <script>
 export default {
-    name: 'Home'
-}</script>
+  name: "Home",
+};
+</script>
 
 <style scoped>
 div {
-  width: 1920px;
-  height: 1080px;
+  @apply h-screen;
 }
 </style>
