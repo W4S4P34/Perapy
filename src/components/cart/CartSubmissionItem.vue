@@ -6,39 +6,27 @@
         src="https://cdn.filestackcontent.com/Krg875TyRVwr5OOumHAG/convert?cache=true&crop=126%2C64%2C1187%2C593&crop_first=true&quality=90&w=1920"
         alt="It's Rick Astley"
       />
-      <RemoveButton v-on:click="onHandleRemoveProduct" />
     </div>
-
     <div class="product-name">
       {{ item.name }}
     </div>
     <div class="product-total-price">${{ totalPrice }}</div>
     <div class="quantity-container">
-      <button class="decrease-btn" v-on:click="onHandleDecreasement">
-        <span>-</span>
-      </button>
+      <span>Quantity</span>
       <div class="product-quantity">
         <span>
           {{ item.quantity }}
         </span>
       </div>
-      <button class="increase-btn" v-on:click="onHandleIncreasement">
-        <span>+</span>
-      </button>
     </div>
   </div>
 </template>
 
 <script>
-import RemoveButton from "../ui/RemoveButton.vue";
-
 export default {
   name: "CartItem",
   props: ["data"],
   emits: ["remove"],
-  components: {
-    RemoveButton,
-  },
   data() {
     return {
       item: { ...this.data },
@@ -124,38 +112,15 @@ export default {
 .quantity-container {
   /* Display */
   @apply flex flex-row self-center;
-  
+
   /* Placing */
   @apply col-start-4 row-start-1;
 }
 
-.decrease-btn,
-.increase-btn {
-  /* Font */
-  font-family: "Quicksand", sans-serif;
-  @apply font-semibold text-black text-center;
-  font-size: 30px;
-
-  /* Size */
-  @apply w-8 h-8;
-
-  /* Border */
-  border: 1px solid black;
-  @apply rounded-full;
-
-  /* Display */
-  @apply inline-flex justify-center self-center items-center;
-
-  /* Outline */
-  @apply outline-none;
-}
-.decrease-btn span,
-.increase-btn span {
-  /* Size */
-  @apply w-full;
-
-  /* Alignment */
-  @apply self-center text-center;
+.quantity-container span {
+    /* Font */
+    font-family: 'Open Sans', sans-serif;
+    @apply font-semibold text-lg;
 }
 
 .product-quantity {
@@ -195,7 +160,7 @@ export default {
 
 .product-total-price {
   /* Starting point */
-  @apply col-start-3 row-start-1; 
+  @apply col-start-3 row-start-1;
   /* Font */
   font-family: "Open Sans", sans-serif;
   @apply font-extrabold text-3xl;

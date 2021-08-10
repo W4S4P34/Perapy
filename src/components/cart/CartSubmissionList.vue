@@ -2,23 +2,18 @@
   <div class="cart-list">
     <div v-if="cartList.length > 0" class="inner">
       <div v-for="item in cartList" v-bind:key="item.id">
-        <CartItem v-bind:data="item" v-on:remove="removeProduct" />
-      </div>
-    </div>
-    <div v-else class="inner-alt">
-      <div class="message">
-        There's nothing here!
+        <CartSubmissionItem v-bind:data="item" v-on:remove="removeProduct" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import CartItem from "@/components/cart/CartItem";
+import CartSubmissionItem from "@/components/cart/CartSubmissionItem";
 export default {
   name: "CartList",
   components: {
-    CartItem,
+    CartSubmissionItem,
   },
   data() {
     return {
