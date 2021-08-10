@@ -83,7 +83,8 @@ export default {
   @apply object-cover;
   
   /* Layout */
-  @apply w-44 h-32;
+  width: 220;
+  height: 200px;
 
   /* Shape */
   @apply rounded-2xl;
@@ -95,7 +96,7 @@ export default {
   @apply w-full;
   
   /* Font */
-  font-family: "Open Sans", sans-serif;
+  font-family: "Quicksand", sans-serif;
   letter-spacing: .5px;
 
   /* Alignment */
@@ -107,28 +108,28 @@ export default {
 
 .information-pet-type {
   /* Size */
-  font-size: 8px;
-  line-height: 1rem;
+  font-size: 12px;
+  line-height: 1.5rem;
 
   /* Color */
   @apply  text-gray-500;
   
   /* Styles */
   @apply font-semibold;
+
+  /* Margin */
+  @apply my-1;
 }
 
 .information-pet-name {
   /* Size */
-  font-size: 14px;
+  font-size: 24px;
 
   /* Color */
   @apply  text-black;
 
   /* Styles */
   @apply font-bold;
-
-  /* Margin */
-  margin-top: 1px;
 }
 
 .information-pet-description {
@@ -146,7 +147,7 @@ export default {
   @apply items-center;
 
   /* Margin */
-  @apply mt-2;
+  @apply my-5;
 }
 
 .description-patients img,
@@ -163,7 +164,7 @@ export default {
 .description-certificates p,
 .description-treatments p {
   /* Size */
-  font-size: 9px;
+  font-size: 16px;
 
   /* Color */
   @apply  text-black;
