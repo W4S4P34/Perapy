@@ -3,7 +3,7 @@
 <a>
   <div class="card-container">
     <div class="image-container">
-      <img class="pet-image" src="..\..\assets\pet-images\pet-1.jpg" alt="ChitChat Logo">
+      <img class="pet-image" src="..\..\assets\pet-images\pet-1.jpg" alt="Pet Image">
     </div>
 
     <div class="information-container">
