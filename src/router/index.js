@@ -17,7 +17,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "product" */ '../page/ProductList.vue')
     },
     {
-        path: '/product/productx',
+        path: '/products/productx',
         name: 'Product Detail',
         component: () => import(/* webpackChunkName: "product" */ '../page/ProductDetail.vue')
     },
@@ -34,12 +34,12 @@ const routes = [
     {
         path: '/cart',
         name: 'Cart',
-        component: () => import(/* webpackChunkName: "therapy" */ '../page/Cart.vue')
+        component: () => import(/* webpackChunkName: "shop" */ '../page/Cart.vue')
     },
     {
-        path: '/shippinginfo',
+        path: '/shipping',
         name: 'Shipping Info',
-        component: () => import(/* webpackChunkName: "therapy" */ '../page/ShippingInfo.vue')
+        component: () => import(/* webpackChunkName: "shop" */ '../page/ShippingInfo.vue')
     }
 ]
 
