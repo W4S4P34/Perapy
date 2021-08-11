@@ -46,6 +46,6 @@ export default {
 }
 
 .content {
-  @apply mt-32;
+  @apply mt-24;
 }
 </style>

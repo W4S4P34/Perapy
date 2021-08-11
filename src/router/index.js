@@ -22,10 +22,10 @@ const routes = [
         component: () => import(/* webpackChunkName: "therapy" */ '../page/PetList.vue')
     },
     {
-        path: '/therapy/:petId',
-        name: 'Pet Detail',
-        component: () => import(/* webpackChunkName: "therapy" */ '../page/PetDetail.vue')
-    }
+        path: '/cart',
+        name: 'Cart',
+        component: () => import(/* webpackChunkName: "therapy" */ '../page/Cart.vue')
+    },
 ]
 
 const router = createRouter({
