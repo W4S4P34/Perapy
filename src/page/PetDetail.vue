@@ -5,15 +5,13 @@
 </template>
 
 <script>
-
-import PetRequestDetail from "@/components/petinfo/PetRequestDetail.vue";
+import PetRequestDetail from "@/components/pet/PetRequestDetail.vue";
 export default {
   name: "PetDetail",
   components: {
-    PetRequestDetail
-  }
+    PetRequestDetail,
+  },
 };
-
 </script>
 
 <style scoped></style>

@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import Dropdown from "./Dropdown.vue";
+import Dropdown from "../ui/Dropdown.vue";
 export default {
   name: "Navbar",
   components: {

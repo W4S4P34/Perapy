@@ -1,24 +1,19 @@
 <template>
   <div class="pet-request-list">
-    <div v-for="pet in petList" v-bind:key="pet.id">
+    <div v-for="pet in pets" v-bind:key="pet.id">
       <PetRequestCard v-bind:petData="pet" />
     </div>
   </div>
 </template>
 
 <script>
-import PetRequestCard from "@/components/petinfo/PetRequestCard";
-import petData from "@/assets/data/pet_info.json";
+import PetRequestCard from "@/components/pet/PetRequestCard";
 
 export default {
   name: "PetRequestList",
+  props: ["pets"],
   components: {
     PetRequestCard,
-  },
-  data() {
-    return {
-      petList: petData,
-    };
   },
 };
 </script>
