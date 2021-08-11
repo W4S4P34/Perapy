@@ -4,12 +4,12 @@ const routes = [
     {
         path: '/',
         name: 'Home',
-        component: () => import(/* webpackChunkName: "home" */ '../page/Home.vue')
+        component: () => import(/* webpackChunkName: "placeholder" */ '../page/Placeholder.vue')
     },
     {
         path: '/services',
         name: 'Services',
-        component: () => import(/* webpackChunkName: "services" */ '../page/Services.vue')
+        component: () => import(/* webpackChunkName: "placeholder" */ '../page/Placeholder.vue')
     },
     {
         path: '/products',

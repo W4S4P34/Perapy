@@ -7,11 +7,9 @@
         </div>
         <div class="topics">
           <router-link to="/">Home</router-link>
-          <router-link class="selected_content" to="/products"
-            >Products</router-link
-          >
+          <router-link to="/products">Products</router-link>
           <router-link to="/therapy">Pet Therapy</router-link>
-          <router-link to="/">Services</router-link>
+          <router-link to="/services">Services</router-link>
         </div>
         <div class="userPref">
           <a
@@ -100,6 +98,11 @@ export default {
 .topics .selected_content {
   /* Text */
   @apply text-black font-bold;
+}
+
+.router-link-active,
+.router-link-exact-active {
+  @apply text-black font-bold !important;
 }
 
 .userPref {

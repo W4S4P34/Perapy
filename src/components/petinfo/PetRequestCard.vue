@@ -33,7 +33,7 @@
               src="..\..\assets\icons\treatment.png"
               alt=""
             />
-            <p>Attended Treatments: {{ pet.treatments }}</p>
+            <p>Attended Treatments: {{ pet.attended }}</p>
           </div>
         </div>
       </div>
