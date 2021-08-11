@@ -17,19 +17,24 @@ const routes = [
         component: () => import(/* webpackChunkName: "product" */ '../page/ProductList.vue')
     },
     {
+        path: '/product/productx',
+        name: 'Product Detail',
+        component: () => import(/* webpackChunkName: "product" */ '../page/ProductDetail.vue')
+    },
+    {
         path: '/therapy',
         name: 'Pet Therapy',
         component: () => import(/* webpackChunkName: "therapy" */ '../page/PetList.vue')
     },
     {
+        path: '/therapy/petx',
+        name: 'Pet Detail',
+        component: () => import(/* webpackChunkName: "therapy" */ '../page/PetDetail.vue')
+    },
+    {
         path: '/cart',
         name: 'Cart',
         component: () => import(/* webpackChunkName: "therapy" */ '../page/Cart.vue')
-    },
-    {
-        path: '/therapy/:petId',
-        name: 'Pet Detail',
-        component: () => import(/* webpackChunkName: "therapy" */ '../page/PetDetail.vue')
     },
     {
         path: '/shippinginfo',

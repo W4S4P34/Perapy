@@ -105,6 +105,14 @@ export default {
 
   /* Cursor */
   @apply cursor-pointer;
+
+  /* Transition */
+  transition: background-color 0.2s;
+}
+
+.cart-btn:hover {
+  /* Background */
+  background-color:rgba(67, 110, 217, 1);
 }
 
 .cart-icon {

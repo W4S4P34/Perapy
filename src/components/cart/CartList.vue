@@ -76,7 +76,7 @@ export default {
   @apply mb-16 ml-32;
 
   /* Size */
-  width: 1000px;
+  width: 960px;
   height: 800px;
   @apply overflow-y-hidden;
 }
@@ -87,7 +87,7 @@ export default {
 
 .inner {
   /* Size */
-  width: 1000px;
+  width: 900px;
   height: inherit;
 }
 

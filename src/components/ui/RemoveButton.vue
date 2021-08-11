@@ -17,8 +17,8 @@ export default {
   @apply right-0 bottom-0;
 
   /* Sizing */
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
 
   /* Background */
   background-color: rgba(217, 86, 86, 1);
@@ -35,8 +35,8 @@ export default {
 
 .remove-icon {
   /* Sizing */
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
 
   /* Color */
   @apply text-white;

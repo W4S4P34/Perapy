@@ -69,12 +69,12 @@ export default {
 <style scoped>
 .product-item {
   /* Size */
-  width: inherit;
-  height: 156px;
+  width: 940px;
+  height: 134px;
 
   /* Grid */
   display: grid;
-  grid-template-columns: 160px 340px 240px 180px;
+  grid-template-columns: 140px 340px 200px 180px;
 
   /* Margin */
   @apply my-11;
@@ -89,12 +89,8 @@ export default {
 
 .product-img {
   /* Size */
-  width: 140px;
-  height: 140px;
-
-  /* Center crop */
-  object-fit: none;
-  object-position: center;
+  width: 120px;
+  height: 120px;
 
   /* Border */
   border-radius: 25px;
@@ -111,8 +107,8 @@ export default {
   @apply overflow-ellipsis overflow-hidden break-words;
 
   /* Font */
-  font-family: "Open Sans", sans-serif;
-  @apply font-semibold text-2xl;
+  font-family: "Quicksand", sans-serif;
+  @apply font-semibold text-xl;
 
   /* Margin */
   @apply ml-5;
@@ -134,10 +130,10 @@ export default {
   /* Font */
   font-family: "Quicksand", sans-serif;
   @apply font-semibold text-black text-center;
-  font-size: 30px;
+  font-size: 24px;
 
   /* Size */
-  @apply w-8 h-8;
+  @apply w-6 h-6;
 
   /* Border */
   border: 1px solid black;
@@ -165,8 +161,8 @@ export default {
   font-size: 16px;
 
   /* Size */
-  width: 74px;
-  height: 28px;
+  width: 64px;
+  height: 24px;
 
   /* Border */
   border: 1px solid black;
@@ -197,8 +193,8 @@ export default {
   /* Starting point */
   @apply col-start-3 row-start-1; 
   /* Font */
-  font-family: "Open Sans", sans-serif;
-  @apply font-extrabold text-3xl;
+  font-family: "Quicksand", sans-serif;
+  @apply font-bold text-2xl;
 
   @apply block justify-self-center self-center;
 }
