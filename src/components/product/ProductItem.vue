@@ -37,8 +37,8 @@ export default {
   width: 450px;
   height: 250px;
 
-  /* Margin */
-  @apply mx-10 my-16;
+  /* Margin
+  @apply mx-10 my-16; */
 
   /* Cusor */
   @apply cursor-pointer;

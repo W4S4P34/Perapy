@@ -48,7 +48,7 @@ footer {
   );
 
   /* Sizing */
-  @apply w-full h-40;
+  @apply w-full;
 
   /* Positioning */
   @apply absolute;
@@ -67,10 +67,14 @@ footer {
 
 .dev-info {
   /* Grid */
-  @apply grid grid-cols-2 grid-rows-2;
+  @apply grid grid-cols-2;
+  grid-template-rows: 68px 20px;
+
+  /* Centering */
+  @apply items-center;
 
   /* Margin */
-  @apply mt-4;
+  @apply mt-7 mb-7;
 }
 
 .web-logo {
@@ -107,7 +111,8 @@ footer {
 
 .dev-links {
   /* Flex */
-  @apply flex flex-row justify-between;
+  @apply flex flex-row justify-between items-center;
+
 
   /* Font */
   font-family: "Quicksand", sans-serif;
