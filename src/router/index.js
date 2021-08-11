@@ -26,6 +26,16 @@ const routes = [
         name: 'Cart',
         component: () => import(/* webpackChunkName: "therapy" */ '../page/Cart.vue')
     },
+    {
+        path: '/therapy/:petId',
+        name: 'Pet Detail',
+        component: () => import(/* webpackChunkName: "therapy" */ '../page/PetDetail.vue')
+    },
+    {
+        path: '/shippinginfo',
+        name: 'Shipping Info',
+        component: () => import(/* webpackChunkName: "therapy" */ '../page/ShippingInfo.vue')
+    }
 ]
 
 const router = createRouter({
