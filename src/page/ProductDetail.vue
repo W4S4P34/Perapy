@@ -31,7 +31,13 @@
         <ProductFeedbackList :info="data.feedbacks" />
       </div>
       <div v-else>
-        <ProductDescription :info="{shortDescription: data.short_description, longDescription: data.long_description, ingredients: data.ingredients}" />
+        <ProductDescription
+          :info="{
+            shortDescription: data.short_description,
+            longDescription: data.long_description,
+            ingredients: data.ingredients,
+          }"
+        />
       </div>
     </div>
 
@@ -96,7 +102,6 @@ export default {
       this.error = this.data = null;
       this.loading = true;
       const fetchedId = this.$route.params.productId;
-      console.log(fetchedId);
       productData.forEach((product) => {
         if (product.id === fetchedId) {
           res = product;

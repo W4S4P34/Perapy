@@ -3,9 +3,7 @@
 </template>
 
 <script>
-export default {
-  name: "Services",
-};
+export default {};
 </script>
 
 <style scoped>

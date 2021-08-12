@@ -1,7 +1,7 @@
 <template>
   <nav class="toolbar">
     <span class="navicon">
-      <i class="fa fa-bars icon-cat"></i>
+      <i class="fa fa-bars"></i>
     </span>
     <span class="searchbox">
       <input
@@ -36,19 +36,22 @@ export default {
 
 <style scoped>
 .toolbar {
+  /* Position */
+  @apply relative;
+
   /* Alignment */
   @apply flex justify-center;
 
   /* Margin */
-  @apply mx-4 mt-8 mb-20;
+  @apply mx-4 my-16;
 }
 
 .navicon {
-  /* Flex */
-  @apply flex align-middle;
-
   /* Position */
-  @apply absolute left-12;
+  @apply absolute top-2 left-12;
+
+  /* Size */
+  @apply text-2xl;
 }
 
 .searchbox {
@@ -65,7 +68,7 @@ export default {
 
   /* Size */
   width: 800px;
-  height: 40px;
+  height: 50px;
 
   /* Border */
   @apply border-gray-300 border rounded-3xl;
@@ -77,15 +80,15 @@ export default {
   @apply pl-10;
 
   /* Text size */
-  @apply text-sm;
-
-  /* Outline */
-  @apply outline-none;
+  @apply text-base;
 }
 
 .icon {
+  /* Size */
+  @apply text-xl;
+
   /* Position */
-  @apply absolute left-4 top-3;
+  @apply absolute left-3 top-4;
 }
 
 @keyframes hoverOn {

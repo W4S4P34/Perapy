@@ -1,17 +1,15 @@
 <template>
   <div>
-    <router-view :key="$route.fullPath">
-      <Searchbar />
-      <ProductList v-bind:products="this.pageOfProducts" />
-      <pagination
-        :total-pages="totalPages"
-        :total="total"
-        :per-page="perPage"
-        :current-page="currentPage"
-        @pagechanged="onPageChange"
-      />
-      <CartButton />
-    </router-view>
+    <Searchbar />
+    <ProductList v-bind:products="this.pageOfProducts" />
+    <pagination
+      :total-pages="totalPages"
+      :total="total"
+      :per-page="perPage"
+      :current-page="currentPage"
+      @pagechanged="onPageChange"
+    />
+    <CartButton />
   </div>
 </template>
 
@@ -64,7 +62,6 @@ export default {
       this.total = items.length;
       this.totalPages = total_pages;
       this.pageOfProducts = paginatedItems;
-      console.log(this.pageOfProducts);
     },
   },
 };
