@@ -21,8 +21,8 @@ export default {
 
 <style scoped>
 /* Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap%22");
 
 .app {
   @apply overflow-auto;

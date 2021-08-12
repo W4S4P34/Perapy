@@ -9,7 +9,7 @@
           :disabled="isInFirstPage"
           aria-label="Go to first page"
         >
-          First
+          <i class="fas fa-angle-double-left"/>
         </button>
       </li>
 
@@ -20,11 +20,11 @@
           :disabled="isInFirstPage"
           aria-label="Go to previous page"
         >
-          Previous
+          <i class="fas fa-angle-left"/>
         </button>
       </li>
 
-      <li v-for="page in pages" class="pagination-item" :key="page.name">
+      <li v-for="page in pages" class="pagination-number" :key="page.name">
         <button
           type="button"
           @click="onClickPage(page.name)"
@@ -43,7 +43,7 @@
           :disabled="isInLastPage"
           aria-label="Go to next page"
         >
-          Next
+          <i class="fas fa-angle-right"/>
         </button>
       </li>
 
@@ -54,7 +54,7 @@
           :disabled="isInLastPage"
           aria-label="Go to last page"
         >
-          Last
+          <i class="fas fa-angle-double-right"/>
         </button>
       </li>
     </ul>
@@ -148,15 +148,53 @@ export default {
 
 <style scoped>
 .pagination {
-  list-style-type: none;
+  /* Display */
+  @apply flex;
+
+  /* Layout */
+  @apply w-full;
+
+  /* Items */
+  @apply justify-center;
+
+  /* Spacing */
+  @apply space-x-10;
+
+  /* Margin */
+  @apply mt-10;
 }
 
-.pagination-item {
-  display: inline-block;
+.pagination-number button {
+  /* Layout */
+  min-width: 40px;
+}
+
+.pagination-item button,
+.pagination-number button {
+  /* Layout */
+  @apply w-max;
+  
+  /* Font */
+  font-family: 'Quicksand', sans-serif;
+  @apply text-xl;
+  @apply font-semibold;
+
+  /* Style */
+  @apply rounded-xl;
+
+  /* Padding */
+  @apply px-2 py-1;
 }
 
 .active {
-  background-color: #4aae9b;
-  color: #ffffff;
+  /* Background */
+  background-image: linear-gradient(
+    to right,
+    rgba(136, 96, 208, 0.5),
+    rgba(86, 128, 233, 0.5)
+  );
+  
+  /* Font */
+  @apply text-white;
 }
 </style>

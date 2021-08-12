@@ -274,12 +274,12 @@ export default {
 
   /* Style */
   @apply font-bold;
-
   /* Color */
   @apply bg-gray-100;
 
   /* Style */
   @apply rounded-2xl;
+  @apply outline-none;
 
   /* Padding */
   @apply px-5 pt-5 pb-7;
@@ -313,6 +313,9 @@ textarea::-webkit-scrollbar-thumb {
 
   /* Layout */
   @apply justify-between;
+
+  /* Margin */
+  @apply mt-4;
 }
 
 .pet-detail-data-request-status {
