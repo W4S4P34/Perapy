@@ -5,21 +5,21 @@
 
         <div class="info">
             <div class="username">
-                <a href=""> {{ data.name }} </a>
+                <a href=""> {{ data.username }} </a>
             </div>
 
             <div class="rating">
                 <a><i class="fas fa-star"/></a>
-                <span> {{ data.rating }} </span>
+                <span> {{ data.rating_stars }} </span>
             </div>
             
             <div class="feedback-content">
                 {{ showedContent }}
-                <span v-if="data.content.length > 510" class="dots">...</span>
+                <span v-if="data.comment.length > 510" class="dots">...</span>
                 <span class="more">
-                    {{remainContent}}
+                    {{ remainContent }}
                 </span>
-                <button v-if="data.content.length > 510" class="show-btn" @click="showFullContent()">
+                <button v-if="data.comment.length > 510" class="show-btn" @click="showFullContent()">
                 See more
                 </button>
             </div>
@@ -36,8 +36,8 @@ export default {
     props: ["data"],
     data() {
         return {
-        showedContent: this.data.content.length > 510 ? this.data.content.substr(0, 510) : this.data.content,
-        remainContent: this.data.content.substr(510, this.data.content.length)
+        showedContent: this.data.comment.length > 510 ? this.data.comment.substr(0, 510) : this.data.comment,
+        remainContent: this.data.comment.substr(510, this.data.comment.length)
         };
     },
     methods: {

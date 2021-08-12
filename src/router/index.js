@@ -41,13 +41,20 @@ const routes = [
     {
         path: '/therapy',
         name: 'PetTherapy',
-        component: () => import(/* webpackChunkName: "therapy" */ '../page/PetList.vue')
-    },
-    {
-        path: '/therapy/:petId',
-        name: 'PetDetail',
-        component: () => import(/* webpackChunkName: "therapy" */ '../page/PetDetail.vue')
-    },
+        component: () => import(/* webpackChunkName: "therapy" */ '../view/ScreenPlaceholder.vue'),
+        children: [
+            {
+                path: ':petId',
+                name: 'PetDetail',
+                component: () => import(/* webpackChunkName: "therapy" */ '../page/PetDetail.vue')
+            },
+            {
+                path: '',
+                name: 'PetList',
+                component: () => import(/* webpackChunkName: "therapy" */ '../page/PetList.vue')
+            }
+        ]
+    }
 ]
 
 const router = createRouter({

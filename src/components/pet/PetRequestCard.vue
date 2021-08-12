@@ -1,5 +1,5 @@
 <template>
-  <a>
+  <a @click="navigate">
     <div class="card-container">
       <div class="image-container">
         <img class="pet-image" :src="pet.thumbnail" alt="Pet Image" />
@@ -54,6 +54,9 @@ export default {
     certificatesSize: function() {
       return this.pet.certificate.length;
     },
+    navigate: function() {
+      this.$router.push({name: 'PetDetail', params: {petId: this.pet.id}})
+    }
   },
 };
 </script>
@@ -62,6 +65,9 @@ export default {
 .card-container {
   /* Display */
   @apply flex-col;
+
+  /* Cursor */
+  @apply cursor-pointer;
 
   /* Layout */
   @apply w-11/12;

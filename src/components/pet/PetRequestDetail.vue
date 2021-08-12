@@ -3,29 +3,29 @@
     <div class="pet-detail-information">
       <img
         class="pet-detail-information-image"
-        src="..\..\assets\pet-images\pet-1.jpg"
+        :src="data.thumbnail"
         alt="Pet Image"
       />
       <div class="pet-detail-data-container">
         <div class="pet-detail-data-name">
-          Pet name
+          {{ data.name }}
         </div>
         <div class="pet-detail-data-addition-information">
-          Age: 3 / Breed: Golden Retriever
+          Age: {{ data.age }} / Breed: {{ data.breed }}
         </div>
 
         <div class="pet-detail-data-contact-information">
           <div class="pet-detail-data-contact-owner">
             <img src="..\..\assets\icons\patient.png" alt="" />
-            <p>Mary Charlotte</p>
+            <p> {{ data.sen.name }} </p>
           </div>
           <div class="pet-detail-data-contact-email">
             <img src="..\..\assets\icons\email.png" alt="" />
-            <p>abc_xyz_abc@example.com</p>
+            <p> {{ data.sen.email }} </p>
           </div>
           <div class="pet-detail-data-contact-phone">
             <img src="..\..\assets\icons\phone.png" alt="" />
-            <p>0903928374</p>
+            <p> {{ data.sen.phone }} </p>
           </div>
         </div>
 
@@ -68,10 +68,10 @@
       </div>
 
       <div v-if="isFeedbackActive">
-        <PetRequestFeedbackList />
+        <PetRequestFeedbackList :feedbacks="data.feedbacks"/>
       </div>
       <div v-else>
-        <PetRequestDescription />
+        <PetRequestDescription :info="{ description: data.description, certificates: data.certificate }"/>
       </div>
     </div>
 
@@ -104,6 +104,7 @@ import PetRequestDescription from "@/components/pet/PetRequestDescription";
 
 export default {
   name: "PetRequestDetail",
+  props: ['info'],
   components: {
     Heading,
     PetRequestFeedbackList,
@@ -113,6 +114,7 @@ export default {
     return {
       isFeedbackActive: false,
       isDescriptionActive: true,
+      data: this.info
     };
   },
   computed: {

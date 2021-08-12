@@ -1,17 +1,14 @@
 <template>
 
     <div class="pet-description">
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-    non proident, sunt in culpa qui officia deserunt mollit anim id est
-    laborum."
+    {{ description }}
+    </div>
+    <div class="certificate-title">
+        Certificate
     </div>
     <div class="pet-certificate-container">
         <div class="pet-certificate" v-for="certificate in certificateList" :key="certificate.id">
-            <p> {{ certificate.name }} </p>
+            <span> -  <strong>{{ certificate.name }}</strong> by {{ certificate.issued_by }} </span>
         </div>
     </div>
 
@@ -21,26 +18,11 @@
 
 export default {
     name: "PetRequestDescription",
+    props: ['info'],
     data() {
         return {
-            certificateList: [
-                { 
-                    id: "1",
-                    name: "Certificate 1"
-                },
-                { 
-                    id: "2",
-                    name: "Certificate 2"
-                },
-                { 
-                    id: "3",
-                    name: "Certificate 3"
-                },
-                { 
-                    id: "4",
-                    name: "Certificate 4"
-                }
-            ]
+            certificateList: this.info.certificates,
+            description: this.info.description
         }
     }
 };
@@ -65,6 +47,17 @@ export default {
 
     /* Margin */
     @apply mt-7 mx-0;
+}
+
+.certificate-title {
+    /* Font */
+    @apply font-semibold;
+
+    /* Padding */
+    @apply px-14;
+    
+    /* Margin */
+    @apply mt-3;
 }
 
 .pet-certificate-container {
