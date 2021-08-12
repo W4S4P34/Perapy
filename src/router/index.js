@@ -17,29 +17,29 @@ const routes = [
         component: () => import(/* webpackChunkName: "product" */ '../page/ProductList.vue')
     },
     {
-        path: '/products/productx',
-        name: 'Product Detail',
-        component: () => import(/* webpackChunkName: "product" */ '../page/ProductDetail.vue')
+        path: '/products/:productId',
+        name: 'ProductDetail',
+        component: () => import(/* webpackChunkName: "productDetail" */ '../page/ProductDetail.vue')
     },
     {
         path: '/therapy',
-        name: 'Pet Therapy',
+        name: 'PetTherapy',
         component: () => import(/* webpackChunkName: "therapy" */ '../page/PetList.vue')
-    },
-    {
-        path: '/therapy/petx',
-        name: 'Pet Detail',
-        component: () => import(/* webpackChunkName: "therapy" */ '../page/PetDetail.vue')
     },
     {
         path: '/cart',
         name: 'Cart',
-        component: () => import(/* webpackChunkName: "shop" */ '../page/Cart.vue')
+        component: () => import(/* webpackChunkName: "therapy" */ '../page/Cart.vue')
     },
     {
-        path: '/shipping',
-        name: 'Shipping Info',
-        component: () => import(/* webpackChunkName: "shop" */ '../page/ShippingInfo.vue')
+        path: '/therapy/:petId',
+        name: 'PetDetail',
+        component: () => import(/* webpackChunkName: "therapy" */ '../page/PetDetail.vue')
+    },
+    {
+        path: '/shippinginfo',
+        name: 'ShippingInfo',
+        component: () => import(/* webpackChunkName: "therapy" */ '../page/ShippingInfo.vue')
     }
 ]
 

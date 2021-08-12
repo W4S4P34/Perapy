@@ -1,5 +1,5 @@
 <template>
-  <a>
+  <a @click="navigate">
     <div class="product-item">
       <img class="product-img" :src="product.thumbnail" />
       <div class="product-info">
@@ -28,6 +28,11 @@ export default {
       product: this.data,
     };
   },
+  methods: {
+    navigate() {
+      this.$router.push({name: 'ProductDetail', params: {productId: this.product.id}})
+    }
+  }
 };
 </script>
 

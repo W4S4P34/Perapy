@@ -1,15 +1,17 @@
 <template>
   <div>
-    <Searchbar />
-    <ProductList v-bind:products="this.pageOfProducts" />
-    <pagination
-      :total-pages="totalPages"
-      :total="total"
-      :per-page="perPage"
-      :current-page="currentPage"
-      @pagechanged="onPageChange"
-    />
-    <CartButton />
+    <router-view :key="$route.fullPath">
+      <Searchbar />
+      <ProductList v-bind:products="this.pageOfProducts" />
+      <pagination
+        :total-pages="totalPages"
+        :total="total"
+        :per-page="perPage"
+        :current-page="currentPage"
+        @pagechanged="onPageChange"
+      />
+      <CartButton />
+    </router-view>
   </div>
 </template>
 

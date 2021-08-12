@@ -1,6 +1,16 @@
 <template>
   <div class="page-container">
-    <ProductDetail />
+    <ProductDetail
+      :info="{
+        id: data.id,
+        name: data.name,
+        thumbnail: data.thumbnail,
+        price: data.price,
+        rating: data.rating,
+        category: data.category,
+        subCategory: data.sub_category,
+      }"
+    />
     <div class="description-feedback-container">
       <div class="headings">
         <Heading
@@ -18,10 +28,10 @@
         </Heading>
       </div>
       <div v-if="isFeedbackActive">
-      <ProductFeedbackList />
+        <ProductFeedbackList :info="data.feedbacks" />
       </div>
       <div v-else>
-        <ProductDescription/>
+        <ProductDescription :info="{shortDescription: data.short_description, longDescription: data.long_description, ingredients: data.ingredients}" />
       </div>
     </div>
 
@@ -37,6 +47,7 @@ import Heading from "@/components/reuseable-component/Heading";
 import ProductSuggestionList from "@/components/product/ProductSuggestionList";
 import ProductFeedbackList from "@/components/product/ProductFeedbackList";
 import ProductDescription from "@/components/product/ProductDescription";
+import productData from "@/assets/data/product.json";
 
 export default {
   name: "ProductDetailPage",
@@ -46,13 +57,17 @@ export default {
     Container,
     ProductSuggestionList,
     ProductFeedbackList,
-    ProductDescription
+    ProductDescription,
   },
   data() {
     return {
       isFeedbackActive: false,
       isDescriptionActive: true,
+      data: null,
     };
+  },
+  created() {
+    this.fetchData();
   },
   computed: {
     feedback() {
@@ -61,6 +76,9 @@ export default {
     tabs() {
       return "tabs";
     },
+  },
+  watch: {
+    $route: "fetchData",
   },
   methods: {
     feedbackActive() {
@@ -72,6 +90,19 @@ export default {
       console.log("Details active");
       this.isFeedbackActive = false;
       this.isDescriptionActive = true;
+    },
+    fetchData() {
+      let res;
+      this.error = this.data = null;
+      this.loading = true;
+      const fetchedId = this.$route.params.productId;
+      console.log(fetchedId);
+      productData.forEach((product) => {
+        if (product.id === fetchedId) {
+          res = product;
+        }
+      });
+      this.data = res;
     },
   },
 };

@@ -3,7 +3,7 @@
     <img class="img" src="../../assets/pet-images/pet-1.jpg" />
     <div class="info">
       <div class="username">
-        <a href="">{{ data.name }}</a>
+        <a href="">{{ data.userName }}</a>
       </div>
       <div class="rating">
         <a><i class="fas fa-star"/></a>
@@ -59,7 +59,7 @@ export default {
   @apply flex flex-row;
 
   /* Margin */
-  @apply mb-24;
+  @apply mb-16;
 
   /* Width */
   width: 1250px;

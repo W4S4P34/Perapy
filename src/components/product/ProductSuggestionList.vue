@@ -20,18 +20,21 @@ export default {
           id: "p1",
           name: "Bicycle",
           description: "A beautiful bicycle",
+          rating: 4,
           price: 64,
         },
         {
           id: "p2",
           name: "Disc",
           description: "A beautiful disc",
+          rating: 4,
           price: 645,
         },
         {
           id: "p3",
           name: "T-bag",
           description: "A beautiful t-bag",
+          rating: 4,
           price: 68,
         },
       ],
@@ -43,8 +46,12 @@ export default {
 <style scoped>
 .product-list {
   /* Flex */
-  @apply flex flex-row flex-wrap;
+  @apply grid grid-cols-3 gap-x-20;
 
-  @apply px-9 p-7;
+  /* Margin */
+  @apply mx-40;
+
+  /* Padding */
+  @apply pt-8;
 }
 </style>

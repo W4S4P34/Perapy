@@ -2,7 +2,7 @@
   <div class="product-detail-container">
     <img
       class="product-img"
-      src="https://i.pinimg.com/originals/8e/d2/34/8ed2347633e4dc68c4d709f16bd41ecc.jpg"
+      :src="data.thumbnail"
     />
     <div class="product-info">
       <div class="product-name">
@@ -24,7 +24,7 @@
         </div>
       </div>
       <div class="product-price">${{ data.price }}</div>
-      <Button :class="addToCart">Add to cart</Button>
+      <Button :class="addToCart" @click="demo">Add to cart</Button>
     </div>
   </div>
 </template>
@@ -32,17 +32,12 @@
 <script>
 import Button from "@/components/reuseable-component/Button";
 
-
 export default {
   name: "ProductDetail",
+  props: ['info'],
   data() {
     return {
-      data: {
-        name: "Loundraw",
-        description: "Author",
-        price: 69.42,
-        numberRating: "12,345",
-      },
+      data: this.info,
     };
   },
   components: {
@@ -52,7 +47,7 @@ export default {
     addToCart() {
       return 'add-to-cart'
     }
-  }
+  },
 };
 </script>
 
@@ -77,10 +72,6 @@ export default {
   width: 540px;
   height: 540px;
 
-  /* Center crop */
-  object-fit: none; /* Do not scale the image */
-  object-position: center; /* Center the image within the element */
-
   /* Rounding */
   @apply rounded-full;
 }
@@ -90,7 +81,7 @@ export default {
   @apply ml-16;
 
   /* Font */
-  font-family: "Open Sans", sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 
 .product-name {

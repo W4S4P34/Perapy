@@ -1,18 +1,19 @@
 <template>
-  <a>
+  <a @click="navigate">
     <div class="product-item">
-      <img
-        class="product-img"
-        src="https://vanphongphamthudaumot.com/wp-content/uploads/2017/05/1466669551002_8915517.jpg"
-      />
+      <img class="product-img" :src="product.thumbnail" />
       <div class="product-info">
         <div class="product-name">
-          {{ data.name }}
+          {{ product.name }}
         </div>
-        <div class="product-description">
-          {{ data.description }}
+        <div class="product-rating">
+          <a><i class="fas fa-star"/></a>
+          <div>{{ product.rating }}</div>
         </div>
-        <div class="product-price">${{ data.price }}</div>
+        <div class="product-price">
+          <a><i class="fas fa-dollar-sign"></i></a>
+          <div>{{ product.price }}</div>
+        </div>
       </div>
     </div>
   </a>
@@ -20,8 +21,18 @@
 
 <script>
 export default {
-  name: "ProductSuggestionItem",
+  name: "ProductItem",
   props: ["data"],
+  data: function() {
+    return {
+      product: this.data,
+    };
+  },
+  methods: {
+    navigate() {
+      this.$router.push({name: 'ProductDetail', params: {productId: this.product.id}})
+    }
+  }
 };
 </script>
 
@@ -31,8 +42,8 @@ export default {
   width: 450px;
   height: 250px;
 
-  /* Margin */
-  @apply mx-9;
+  /* Margin
+  @apply mx-10 my-16; */
 
   /* Cusor */
   @apply cursor-pointer;
@@ -45,10 +56,6 @@ export default {
   width: 200px;
   height: 250px;
 
-  /* Center crop */
-  object-fit: none; /* Do not scale the image */
-  object-position: center; /* Center the image within the element */
-
   border-radius: 100px;
 }
 
@@ -57,24 +64,45 @@ export default {
   @apply block;
 
   /* Margin */
-  @apply m-auto;
+  @apply ml-4 my-auto;
 
   /* Font */
-  font-family: "Open Sans", sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 
 .product-name {
   /* Font */
   @apply text-lg font-bold;
+
+  @apply mb-2;
 }
 
-.product-description {
+.product-rating {
   /* Font */
-  @apply text-sm font-normal;
+  @apply text-lg font-normal;
+
+  /* Flex */
+  @apply flex flex-row;
+}
+
+.product-rating div {
+  @apply ml-2;
+  @apply text-left;
 }
 
 .product-price {
   /* Font */
-  @apply text-lg font-bold;
+  @apply text-lg font-normal;
+
+  /* Flex */
+  @apply flex flex-row;
+
+  /* Margin */
+  @apply ml-1;
+}
+
+.product-price div {
+  @apply ml-3;
+  @apply text-left;
 }
 </style>

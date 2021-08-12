@@ -1,5 +1,5 @@
 <template>
-  <div class="cart-btn">
+  <div class="cart-btn" @click="navigate">
     <i class="fas fa-shopping-cart cart-icon" />
   </div>
 </template>
@@ -41,7 +41,6 @@ export default {
       findHighestNode(document.documentElement.childNodes);
       return pageHeight;
     },
-
     changeButtonDisplay() {
       const button = document.querySelector(".cart-btn");
       const footer = document.querySelector(".footer");
@@ -74,6 +73,9 @@ export default {
         button.style.bottom = "0px";
       }
     },
+    navigate() {
+      this.$router.push({name: "Cart"});
+    }
   },
 };
 </script>
