@@ -6,7 +6,8 @@
         name: data.name,
         thumbnail: data.thumbnail,
         price: data.price,
-        rating: data.rating,
+        rating: data.numberRating,
+        aveRating: data.rating_stars,
         category: data.category,
         subCategory: data.sub_category,
       }"
