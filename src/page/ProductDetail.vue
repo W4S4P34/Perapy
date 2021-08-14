@@ -44,6 +44,7 @@
 
     <Heading>You might Also like</Heading>
     <Container><ProductSuggestionList /></Container>
+    <CartButton />
   </div>
 </template>
 
@@ -55,6 +56,7 @@ import ProductSuggestionList from "@/components/product/ProductSuggestionList";
 import ProductFeedbackList from "@/components/product/ProductFeedbackList";
 import ProductDescription from "@/components/product/ProductDescription";
 import productData from "@/assets/data/product.json";
+import CartButton from "@/components/ui/CartButton";
 
 export default {
   name: "ProductDetailPage",
@@ -65,6 +67,7 @@ export default {
     ProductSuggestionList,
     ProductFeedbackList,
     ProductDescription,
+    CartButton,
   },
   data() {
     return {

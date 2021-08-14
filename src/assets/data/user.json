@@ -1,0 +1,29 @@
+{
+  "username": "dhunter0",
+  "name": "Dawna Hunter",
+  "address": "21 Grim Park D.10",
+  "phone": "665-226-7318",
+  "cart": {
+    "length": 36,
+    "cart_price": 588.91,
+    "shipping_fee": 4.99,
+    "data": [
+      {
+        "id": "cdb87661-aabc-41b0-9e94-678be1fd08fd",
+        "quantity": 2
+      },
+      {
+        "id": "dd809700-61b5-4b11-bf02-8adf49a08a91",
+        "quantity": 3
+      },
+      {
+        "id": "73851fd6-4cad-409b-b875-db8c78e4b92f",
+        "quantity": 3
+      },
+      {
+        "id": "79eec4c8-7a05-4431-b86e-e06e0b8d1d5d",
+        "quantity": 1
+      }
+    ]
+  }
+}
