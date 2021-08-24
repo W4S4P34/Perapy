@@ -128,10 +128,16 @@ export default {
 
     /* Text */
     font-family: "Quicksand", sans-serif;
-    @apply text-2xl;
+    @apply text-2xl font-bold;
 
     /* Margin */
     @apply mb-10;
+
+    /* Padding */
+    @apply py-1;
+
+    /* Transition */
+    transition: 0.2s;
 }
 
 .payment-info {
@@ -213,5 +219,34 @@ export default {
 
     /* Padding */
     @apply py-3 px-10;
+
+    /* Transition */
+    transition: 0.2s;
+}
+
+.edit-info:hover {
+    /* Background Hover */
+    @apply bg-gray-400;
+
+    /* Border Hover */
+    @apply border-gray-400;
+}
+
+.buy-button:hover {
+    /* Background Hover */
+    @apply bg-gray-400;
+
+    /* Border Hover */
+    @apply border-gray-400;
+}
+
+.fade-enter-active, .fade-leave-active {
+    /* Transition */
+    @apply transition-opacity;
+}
+
+.fade-enter, .fade-leave-active {
+    /* Opacity */
+    opacity: 0;
 }
 </style>

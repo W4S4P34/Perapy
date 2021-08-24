@@ -4,16 +4,16 @@
     <div class="summary-content">
       <div class="cart-price">
         <span class="label">Cart Price</span>
-        <span class="price">$419.76</span>
+        <span class="price">${{ calculateTotal }}</span>
       </div>
       <div class="cart-price">
         <span class="label">Shipping Fee</span>
-        <span class="price">$1</span>
+        <span class="price">${{shippingFee}}</span>
       </div>
       <div class="divider"></div>
       <div class="total-price">
         <span class="label">Total</span>
-        <span class="price">$420.76</span>
+        <span class="price">${{calculateTotal + shippingFee}}</span>
       </div>
     </div>
     <button type="submit" class="checkout-button" @click="navigate">
@@ -29,7 +29,21 @@ export default {
       this.$router.push({ name: "Shipping" });
     },
   },
-};
+  props: ["list"],
+  data() {
+    return {
+      cartList: this.list,
+      shippingFee: 1,
+    };
+  },
+  computed: {
+    calculateTotal() {
+      return this.cartList.reduce((accumulator, currentValue) => {
+        return accumulator + currentValue.price * currentValue.quantity;
+      }, 0);
+    },
+  },
+}
 </script>
 
 <style scoped>
@@ -147,7 +161,28 @@ export default {
   /* Background */
   @apply bg-blue-500;
 
-  /* Padding */
-  @apply py-4 px-8;
+    /* Padding */
+    @apply py-4 px-8;
+
+    /* Transition */
+    transition: 0.2s;
+}
+
+.checkout-button:hover {
+    /* Background Hover */
+    @apply bg-gray-400;
+
+    /* Border Hover */
+    @apply border-gray-400;
+}
+
+.fade-enter-active, .fade-leave-active {
+    /* Transition */
+    @apply transition-opacity;
+}
+
+.fade-enter, .fade-leave-active {
+    /* Opacity */
+    opacity: 0;
 }
 </style>
