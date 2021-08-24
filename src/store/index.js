@@ -46,6 +46,7 @@ const store = createStore({
                 state.changed = true;
             }
             else {
+                console.log("A");
                 existingProduct.totalPrice = Math.round((existingProduct.totalPrice + existingProduct.price) * 100) / 100;
                 existingProduct.quantity++;
             }
@@ -69,8 +70,7 @@ const store = createStore({
 
             const existingProduct = state.cartList.find(item => item.id === decreasedProductId);
             if (existingProduct.quantity === 1) {
-                state.cartList = state.cartList.filter(item => item.id !== decreasedProductId);
-                state.totalQuantity--;
+                return;
             }
             else {
                 existingProduct.quantity--;

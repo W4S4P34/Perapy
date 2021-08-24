@@ -22,7 +22,7 @@ export default {
 <style scoped>
 .product-list {
   /* Flex */
-  @apply grid grid-cols-3 gap-x-20 gap-y-40;
+  @apply grid grid-cols-3 gap-x-20 gap-y-20;
 
   /* Margin */
   @apply mx-40;
