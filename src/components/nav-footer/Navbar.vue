@@ -12,14 +12,7 @@
           <router-link to="/services">Services</router-link>
         </div>
         <div class="userPref">
-          <a
-            ><img
-              class="userImage"
-              src="https://i.pinimg.com/originals/f6/70/a8/f670a8875997412b46cea057e2ba7aae.png"
-          /></a>
-          <div class="dropdown">
-            <Dropdown />
-          </div>
+          <Dropdown />
         </div>
       </div>
     </nav>
@@ -88,8 +81,7 @@ export default {
 
   /* Text */
   font-family: "Quicksand", sans-serif;
-  @apply text-gray-500;
-  @apply font-light;
+  @apply text-gray-700;
 
   /* Margin */
   @apply mx-14 my-2;
@@ -110,22 +102,9 @@ export default {
   @apply flex items-center;
 }
 
-.userImage {
-  /* Sizing */
-  @apply w-8 h-8 rounded-full;
-
-  /* Alignment */
-  @apply self-center;
-}
-
-.dropdown {
-  /* Margin */
-  @apply mx-2;
-}
-
 @keyframes hoverOn {
   from {
-    color: gray;
+    @apply text-gray-700;
   }
   to {
     color: white;
@@ -136,7 +115,7 @@ export default {
     color: white;
   }
   to {
-    color: gray;
+    @apply text-gray-700;
   }
 }
 
@@ -150,20 +129,17 @@ export default {
 }
 
 .topics a {
-  /* Color */
-  color: gray;
-
   /* Animation */
   animation-name: hoverOff;
   animation-duration: 0.2s;
 }
 
-.userPref div:hover {
+.userPref:hover {
   /* Cursor */
   @apply cursor-pointer;
 
   /* Color */
-  color: black;
+  color: white;
 
   /* Animation */
   animation-name: hoverOn;

@@ -1,12 +1,9 @@
 <template>
   <nav class="toolbar">
-    <span class="navicon">
-      <i class="fa fa-bars"></i>
-    </span>
     <span class="searchbox">
       <input
         class="searchfield"
-        @input="debounceSearch"
+        @input="onChangeSearchBarHandler"
         type="text"
         placeholder="Search products..."
       />
@@ -46,14 +43,6 @@ export default {
   @apply mx-4 my-16;
 }
 
-.navicon {
-  /* Position */
-  @apply absolute top-2 left-12;
-
-  /* Size */
-  @apply text-2xl;
-}
-
 .searchbox {
   /* Font */
   font-family: "Quicksand", sans-serif;
@@ -64,23 +53,29 @@ export default {
 
 .searchfield {
   /* Background */
-  @apply bg-gray-300;
-
+  background-color:  rgba(238, 238, 238, 1); 
+  
   /* Size */
   width: 800px;
   height: 50px;
 
   /* Border */
-  @apply border-gray-300 border rounded-3xl;
-
-  /* Padding */
-  @apply px-2;
+  @apply border rounded-3xl;
+  border-color: rgba(238, 238, 238, 1); 
 
   /* Text Indent */
-  @apply pl-10;
+  @apply pl-12;
 
   /* Text size */
   @apply text-base;
+
+  /* Text Color */
+  @apply text-black;
+}
+
+::placeholder {
+  /* Text color */
+  @apply text-gray-600;
 }
 
 .icon {
@@ -88,7 +83,7 @@ export default {
   @apply text-xl;
 
   /* Position */
-  @apply absolute left-3 top-4;
+  @apply absolute left-5 top-4;
 }
 
 @keyframes hoverOn {
@@ -106,29 +101,5 @@ export default {
   to {
     color: black;
   }
-}
-
-.navicon:hover {
-  /* Cursor */
-  @apply cursor-pointer;
-
-  /* Color */
-  color: gray;
-
-  /* Animation */
-  animation-name: hoverOn;
-  animation-duration: 0.2s;
-}
-
-.navicon {
-  /* Cursor */
-  @apply cursor-pointer;
-
-  /* Color */
-  color: black;
-
-  /* Animation */
-  animation-name: hoverOff;
-  animation-duration: 0.2s;
 }
 </style>

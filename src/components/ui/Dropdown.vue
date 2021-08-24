@@ -2,7 +2,10 @@
     <div>
         <ul class="menu">
             <li @mouseover="listOne = true" @mouseleave="listOne = false">
-                <a href="#">
+                <a class="dropdownPref">
+                    <img
+                    class="userImage"
+                    src="https://i.pinimg.com/originals/f6/70/a8/f670a8875997412b46cea057e2ba7aae.png"/>
                     <i class="fas fa-angle-down"></i>
                 </a>
                 <transition name="fade">
@@ -29,12 +32,34 @@ export default {
 </script>
 
 <style scoped>
-.menu {  
+.menu { 
     /* Font */
     font-family: 'Open Sans', sans-serif;
 }
 
+.userImage {
+    /* Sizing */
+    @apply w-8 h-8 rounded-full;
+
+    /* Alignment */
+    @apply self-center;
+
+    /* Margin */
+    @apply mx-2;
+}
+
+.dropdownPref {
+    /* Flex */
+    @apply flex flex-row items-center;
+
+    /* Margin */
+    @apply mx-2;
+}
+
 .dropdown-content {
+    /* Display */
+    display: none;
+
     /* Position */
     @apply absolute right-0;
 
@@ -46,7 +71,14 @@ export default {
     width: 160px;
 
     /* Margin */
-    @apply mt-3;
+    @apply mt-2;
+
+    /* Index */
+    z-index: 100;
+}
+
+.dropdown-content, .dropdown-content:hover {
+    display: block;
 }
 
 .dropdown-content a {
