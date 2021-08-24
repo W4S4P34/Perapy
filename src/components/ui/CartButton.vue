@@ -1,7 +1,8 @@
 <template>
-  <div class="cart-btn" @click="navigate">
+  <button class="cart-btn" @click="navigate">
+    <div class="badge">{{ totalAmount }}</div>
     <i class="fas fa-shopping-cart cart-icon" />
-  </div>
+  </button>
 </template>
 
 <script>
@@ -44,8 +45,6 @@ export default {
     changeButtonDisplay() {
       const button = document.querySelector(".cart-btn");
       const footer = document.querySelector(".footer");
-      // const pageHeight = this.getPageHeight();
-      // console.log(pageHeight);
       const rectTop = (el) => {
         const rect = el.getBoundingClientRect();
         return rect.top;
@@ -74,8 +73,13 @@ export default {
       }
     },
     navigate() {
-      this.$router.push({name: "Cart"});
-    }
+      this.$router.push({ name: "Cart" });
+    },
+  },
+  computed: {
+    totalAmount() {
+      return this.$store.state.totalQuantity;
+    },
   },
 };
 </script>
@@ -114,7 +118,7 @@ export default {
 
 .cart-btn:hover {
   /* Background */
-  background-color:rgba(67, 110, 217, 1);
+  background-color: rgba(67, 110, 217, 1);
 }
 
 .cart-icon {
@@ -125,6 +129,32 @@ export default {
   /* Color */
   @apply text-white;
 
-  @apply mt-4 ml-3.5;
+  @apply mr-1 mt-1;
+}
+
+.badge {
+  /* Size */
+  width: 28px;
+  height: 28px;
+
+  /* Position */
+  @apply absolute;
+  @apply -right-2 -top-2;
+
+  /* Line height */
+  line-height: 28px;
+
+  /* Rounded */
+  @apply rounded-full;
+
+  /* Centering */
+  @apply self-center text-center;
+
+  /* Font */
+  @apply text-white;
+  font-family: "Quicksand", sans-serif;
+
+  /* Background */
+  background-color: rgba(136, 96, 208, 1);
 }
 </style>

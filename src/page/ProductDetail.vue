@@ -32,19 +32,13 @@
         <ProductFeedbackList :info="data.feedbacks" />
       </div>
       <div v-else>
-        <ProductDescription
-          :info="{
-            shortDescription: data.short_description,
-            longDescription: data.long_description,
-            ingredients: data.ingredients,
-          }"
-        />
+        <ProductDescription :info="{shortDescription: data.short_description, longDescription: data.long_description, ingredients: data.ingredients}" />
       </div>
     </div>
 
     <Heading>You might Also like</Heading>
     <Container><ProductSuggestionList /></Container>
-    <CartButton />
+    <CartButton/>
   </div>
 </template>
 
@@ -55,8 +49,8 @@ import Heading from "@/components/reuseable-component/Heading";
 import ProductSuggestionList from "@/components/product/ProductSuggestionList";
 import ProductFeedbackList from "@/components/product/ProductFeedbackList";
 import ProductDescription from "@/components/product/ProductDescription";
-import productData from "@/assets/data/product.json";
 import CartButton from "@/components/ui/CartButton";
+import productData from "@/assets/data/product.json";
 
 export default {
   name: "ProductDetailPage",
@@ -103,8 +97,6 @@ export default {
     },
     fetchData() {
       let res;
-      this.error = this.data = null;
-      this.loading = true;
       const fetchedId = this.$route.params.productId;
       productData.forEach((product) => {
         if (product.id === fetchedId) {

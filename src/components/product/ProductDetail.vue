@@ -1,11 +1,27 @@
 <template>
-  <div>
-    <Modal v-if="isOpen" @closingModal="addProductToCart">Product has been added into your cart.</Modal>
-    <div class="product-detail-container">
-      <img class="product-img" :src="data.thumbnail" />
-      <div class="product-info">
-        <div class="product-name">
-          {{ data.name }}
+  <div class="product-detail-container">
+    <img class="product-img" :src="data.thumbnail" />
+    <div class="product-info">
+      <div class="product-name">
+        {{ data.name }}
+      </div>
+      <div class="product-description">
+        {{ data.description }}
+      </div>
+      <div class="product-rating">
+        <div class="star-rating">
+          <star-rating
+            v-bind:increment="0.5"
+            v-bind:rating="data.aveRating"
+            v-bind:max-rating="5"
+            v-bind:show-rating="false"
+            v-bind:read-only="true"
+            border-color="#000"
+            border-active-color="#000"
+            active-color="#000"
+            v-bind:star-size="20"
+          >
+          </star-rating>
         </div>
         <div class="product-description">
           {{ data.description }}
@@ -32,6 +48,8 @@
         <div class="product-price">${{ data.price }}</div>
         <Button :class="addToCart" @click="addProductToCart">Add to cart</Button>
       </div>
+      <div class="product-price">${{ data.price }}</div>
+      <Button :class="addToCart" @click="addProductToCart">Add to cart</Button>
     </div>
   </div>
 </template>
@@ -47,13 +65,23 @@ export default {
   data() {
     return {
       data: this.info,
-      isOpen: false,
     };
   },
   components: {
     Button,
     StarRating,
     Modal
+  },
+  methods: {
+    addProductToCart() {
+      const product = {
+        id: this.data.id,
+        thumbnail: this.data.thumbnail,
+        name: this.data.name,
+        price: this.data.price,
+      };
+      this.$store.dispatch("addProductToCart", product);
+    },
   },
   computed: {
     addToCart() {

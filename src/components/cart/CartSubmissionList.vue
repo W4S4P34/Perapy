@@ -15,41 +15,10 @@ export default {
   components: {
     CartSubmissionItem,
   },
-  data() {
-    return {
-      cartList: [
-        {
-          id: "p1",
-          name: "Long Long Long Long Long Product Name",
-          quantity: 3,
-          price: 64,
-        },
-        {
-          id: "p2",
-          name: "Mjornir",
-          quantity: 1,
-          price: 2,
-        },
-        {
-          id: "p3",
-          name: "Zephyr",
-          quantity: 69,
-          price: 4,
-        },
-        {
-          id: "p4",
-          name: "Rick",
-          quantity: 31,
-          price: 14.77,
-        },
-        {
-          id: "p5",
-          name: "Rolled",
-          quantity: 32,
-          price: 114,
-        },
-      ],
-    };
+  computed: {
+    cartList() {
+      return this.$store.getters.cartList;
+    },
   },
   methods: {
     removeProduct(id) {

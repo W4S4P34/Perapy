@@ -3,8 +3,7 @@
     <div class="sub-container">
       <img
         class="product-img"
-        src="https://cdn.filestackcontent.com/Krg875TyRVwr5OOumHAG/convert?cache=true&crop=126%2C64%2C1187%2C593&crop_first=true&quality=90&w=1920"
-        alt="It's Rick Astley"
+        :src="item.thumbnail"
       />
       <RemoveButton v-on:click="onHandleRemoveProduct" />
     </div>
@@ -12,14 +11,14 @@
     <div class="product-name">
       {{ item.name }}
     </div>
-    <div class="product-total-price">${{ totalPrice }}</div>
+    <div class="product-total-price">${{ info[1] }}</div>
     <div class="quantity-container">
       <button class="decrease-btn" v-on:click="onHandleDecreasement">
         <span>-</span>
       </button>
       <div class="product-quantity">
         <span>
-          {{ item.quantity }}
+          {{ info[0] }}
         </span>
       </div>
       <button class="increase-btn" v-on:click="onHandleIncreasement">
@@ -46,21 +45,21 @@ export default {
   },
   computed: {
     totalPrice() {
-      return Math.round(this.item.quantity * this.item.price * 1000) / 1000;
+      return Math.round(this.item.quantity * this.item.price * 100) / 100;
     },
+    info() {
+      return this.$store.getters.productInfo(this.item.id)
+    }
   },
   methods: {
-    onHandleIncreasement() {
-      this.item.quantity += 1;
+    onHandleIncreasement() { 
+      this.$store.dispatch('increaseProductQuantity', this.item.id);
     },
     onHandleDecreasement() {
-      if (this.item.quantity === 0) {
-        return;
-      }
-      this.item.quantity -= 1;
+      this.$store.dispatch('decreaseProductQuantity', this.item.id);
     },
     onHandleRemoveProduct() {
-      this.$emit("remove", this.item.id);
+      this.$store.dispatch('removeProduct', this.item.id);
     },
   },
 };

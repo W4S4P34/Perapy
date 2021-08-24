@@ -9,7 +9,7 @@
       <div class="cart-price">
         <span class="label">Shipping Fee</span>
         <span class="price">${{shippingFee}}</span>
-      </div>
+      </div> 
       <div class="divider"></div>
       <div class="total-price">
         <span class="label">Total</span>
@@ -29,21 +29,22 @@ export default {
       this.$router.push({ name: "Shipping" });
     },
   },
-  props: ["list"],
   data() {
     return {
-      cartList: this.list,
       shippingFee: 1,
     };
   },
   computed: {
+    cartList() {
+      return this.$store.getters.cartList;
+    },
     calculateTotal() {
-      return this.cartList.reduce((accumulator, currentValue) => {
+      return Math.round(this.cartList.reduce((accumulator, currentValue) => {
         return accumulator + currentValue.price * currentValue.quantity;
-      }, 0);
+      }, 0) * 100) / 100 
     },
   },
-}
+};
 </script>
 
 <style scoped>

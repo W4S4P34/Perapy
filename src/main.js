@@ -12,8 +12,9 @@ library.add(far);
 import { dom } from "@fortawesome/fontawesome-svg-core";
 import router from './router'
 dom.watch();
+import store from './store/index'
 
-const app = createApp(App).use(router)
+const app = createApp(App).use(router).use(store);
 
 app.component("font-awesome-icon", FontAwesomeIcon);
 

@@ -3,14 +3,13 @@
     <div class="sub-container">
       <img
         class="product-img"
-        src="https://cdn.filestackcontent.com/Krg875TyRVwr5OOumHAG/convert?cache=true&crop=126%2C64%2C1187%2C593&crop_first=true&quality=90&w=1920"
-        alt="It's Rick Astley"
+        :src="item.thumbnail"
       />
     </div>
     <div class="product-name">
       {{ item.name }}
     </div>
-    <div class="product-total-price">${{ totalPrice }}</div>
+    <div class="product-total-price">${{ item.totalPrice }}</div>
     <div class="quantity-container">
       <span>Quantity</span>
       <div class="product-quantity">
@@ -31,25 +30,6 @@ export default {
     return {
       item: { ...this.data },
     };
-  },
-  computed: {
-    totalPrice() {
-      return Math.round(this.item.quantity * this.item.price * 1000) / 1000;
-    },
-  },
-  methods: {
-    onHandleIncreasement() {
-      this.item.quantity += 1;
-    },
-    onHandleDecreasement() {
-      if (this.item.quantity === 0) {
-        return;
-      }
-      this.item.quantity -= 1;
-    },
-    onHandleRemoveProduct() {
-      this.$emit("remove", this.item.id);
-    },
   },
 };
 </script>
