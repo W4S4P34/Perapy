@@ -110,8 +110,11 @@ export default {
       let returnedArray = [],
         chosenNumber = 0;
       do {
-        let product = productData[Math.floor(Math.random() * 50)];
-        if (product.id === this.data.id) {
+        let product = productData[Math.floor(Math.random() * 50)],
+          duplicateProd = returnedArray.filter(
+            (each) => each.id === product.id
+          );
+        if (product.id === this.data.id && duplicateProd.length !== 0) {
           continue;
         }
         returnedArray.push(product);
