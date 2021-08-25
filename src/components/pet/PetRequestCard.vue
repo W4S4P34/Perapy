@@ -80,13 +80,33 @@ export default {
   @apply rounded-2xl;
 
   /* BG Color */
-  background-color: #fbf9f9;
+  background-color: #eeeeee;
+  background-image: none;
 
   /* Padding */
   @apply p-5;
 
   /* Margin */
   @apply mx-auto;
+
+  /* Transition */
+  @apply transition duration-500 ease-in-out;
+}
+
+.card-container:hover {
+  /* TRANSITION */
+  /* Background */
+  /* background-image: linear-gradient(
+    to right,
+  rgba(136, 96, 208, 0.5),
+  rgba(86, 128, 233, 0.5)
+  ); */
+
+  /* Position */
+  transform: translate(-5px, -5px);
+
+  /* Shadow */
+  box-shadow: 4px 4px 10px 0px grey;
 }
 
 .image-container {

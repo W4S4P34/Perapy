@@ -42,6 +42,9 @@ export default {
     /* Wrap & Break */
     @apply break-words;
 
+    /* Size */
+    line-height: 1.5;
+
     /* Padding */
     @apply px-14;
 

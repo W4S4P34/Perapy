@@ -33,13 +33,10 @@
           <textarea
             class="pet-detail-data-request"
             rows="5"
-            maxlength="2048"
+            maxlength="5120"
             placeholder="Send volunteer request here..."
           />
           <div class="pet-detail-data-request-misc">
-            <div class="pet-detail-data-request-status">
-              (2048)
-            </div>
             <button class="pet-detail-data-request-button" type="button">
               Request
             </button>
@@ -198,7 +195,7 @@ export default {
 .pet-detail-information,
 .pet-detail-feedback {
   /* Margin */
-  @apply mx-28;
+  @apply mx-64;
 }
 
 .pet-detail-information {
@@ -317,8 +314,9 @@ export default {
 
   /* Style */
   @apply font-bold;
+  
   /* Color */
-  @apply bg-gray-100;
+  background-color: #eeeeee;
 
   /* Style */
   @apply rounded-2xl;
@@ -355,18 +353,10 @@ textarea::-webkit-scrollbar-thumb {
   @apply flex;
 
   /* Layout */
-  @apply justify-between;
+  @apply justify-end;
 
   /* Margin */
   @apply mt-4;
-}
-
-.pet-detail-data-request-status {
-  /* Size */
-  @apply text-base;
-
-  /* Style */
-  @apply font-bold;
 }
 
 .pet-detail-data-request-button {
@@ -414,7 +404,7 @@ textarea::-webkit-scrollbar-thumb {
   @apply gap-x-10;
 
   /* Color */
-  background-color: #fbf9f9;
+  background-color: #eeeeee;
 
   /* Shape */
   @apply rounded-2xl;
@@ -477,7 +467,7 @@ textarea::-webkit-scrollbar-thumb {
 
 .description-feedback-container {
   /* Margin */
-  @apply mx-28 mt-14 mb-16;
+  @apply mx-64 mt-14 mb-16;
 }
 
 .headings {
