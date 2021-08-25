@@ -1,21 +1,23 @@
 <template>
     <div>
         <ul class="menu">
-            <li @mouseover="listOne = true" @mouseleave="listOne = false">
-                <a class="dropdownPref">
-                    <img
-                    class="userImage"
-                    src="https://i.pinimg.com/originals/f6/70/a8/f670a8875997412b46cea057e2ba7aae.png"/>
-                    <i class="fas fa-angle-down"></i>
-                </a>
-                <transition name="fade">
-                    <ul class="dropdown-content" v-if="listOne" @click="listOne = false">
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="#">Notification</a></li>
-                        <li><a href="#">Logout</a></li>
-                    </ul>
-                </transition>
-            </li>
+            <img
+                class="userImage"
+                src="https://i.pinimg.com/originals/f6/70/a8/f670a8875997412b46cea057e2ba7aae.png"/>  
+            <div class="userPref">
+                <li @mouseover="listOne = true" @mouseleave="listOne = false">
+                    <a class="dropdownPref">
+                        <i class="fas fa-angle-down"></i>
+                    </a>
+                    <transition name="fade">
+                        <ul class="dropdown-content" v-if="listOne" @click="listOne = false">
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Notification</a></li>
+                            <li><a href="#">Logout</a></li>
+                        </ul>
+                    </transition>
+                </li>
+            </div> 
         </ul>
     </div>
 </template>
@@ -35,6 +37,11 @@ export default {
 .menu { 
     /* Font */
     font-family: 'Open Sans', sans-serif;
+
+    /* Flex */
+    @apply flex flex-row items-center;
+
+    @apply mt-1;
 }
 
 .userImage {
@@ -45,15 +52,7 @@ export default {
     @apply self-center;
 
     /* Margin */
-    @apply mx-2;
-}
-
-.dropdownPref {
-    /* Flex */
-    @apply flex flex-row items-center;
-
-    /* Margin */
-    @apply mx-2;
+    @apply mr-2;
 }
 
 .dropdown-content {
@@ -67,14 +66,14 @@ export default {
     color: black;
     @apply text-left;
 
+    /* Padding */
+    @apply pt-3;
+
     /* Block size */
     width: 160px;
 
-    /* Margin */
-    @apply mt-2;
-
     /* Index */
-    z-index: 100;
+    z-index: 4;
 }
 
 .dropdown-content, .dropdown-content:hover {
@@ -108,5 +107,40 @@ export default {
 .fade-enter, .fade-leave-active {
     /* Opacity */
     opacity: 0;
+}
+
+@keyframes hoverOn {
+  from {
+    color: black;
+  }
+  to {
+    color: white;
+  }
+}
+@keyframes hoverOff {
+  from {
+    color: white;
+  }
+  to {
+    color: black;
+  }
+}
+
+.userPref {
+  /* Animation */
+  animation-name: hoverOff;
+  animation-duration: 0.2s;
+}
+
+.userPref:hover {
+  /* Cursor */
+  @apply cursor-pointer;
+
+  /* Color */
+  color: white;
+
+  /* Animation */
+  animation-name: hoverOn;
+  animation-duration: 0.2s;
 }
 </style>

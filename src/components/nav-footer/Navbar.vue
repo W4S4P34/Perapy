@@ -2,21 +2,17 @@
   <header>
     <nav class="navbar">
       <div class="header-container">
-        <div class="logo">
-          <img
-            class="web-logo"
-            src="@/assets/icons/logo.png"
-          />
-        </div>
+        <router-link to="/">
+            <img class="web-logo"
+            src="@/assets/icons/logo.png" />
+        </router-link >
         <div class="topics">
           <router-link to="/">Home</router-link>
           <router-link to="/products">Products</router-link>
           <router-link to="/therapy">Pet Therapy</router-link>
           <router-link to="/services">Services</router-link>
         </div>
-        <div class="userPref">
-          <Dropdown />
-        </div>
+        <Dropdown />
       </div>
     </nav>
   </header>
@@ -53,24 +49,10 @@ export default {
 
 .header-container {
   /* Margin */
-  @apply my-1 mx-1;
+  @apply my-1 mx-2;
 
   /* Flex */
   @apply flex justify-between;
-}
-
-.logo h1 {
-  /* Alignment */
-  @apply self-center;
-
-  /* Margin */
-  @apply ml-1;
-
-  /* Text */
-  @apply text-left text-3xl;
-
-  /* Font */
-  font-family: "Quicksand", sans-serif;
 }
 
 .web-logo {
@@ -79,9 +61,6 @@ export default {
 
   /* Alignment */
   @apply self-center justify-self-center;
-
-  /* Margin */
-  @apply ml-1;
 }
 
 .topics {
@@ -109,11 +88,6 @@ export default {
 .router-link-active,
 .router-link-exact-active {
   @apply text-black font-bold !important;
-}
-
-.userPref {
-  /* Flex */
-  @apply flex items-center;
 }
 
 @keyframes hoverOn {
@@ -145,18 +119,6 @@ export default {
 .topics a {
   /* Animation */
   animation-name: hoverOff;
-  animation-duration: 0.2s;
-}
-
-.userPref:hover {
-  /* Cursor */
-  @apply cursor-pointer;
-
-  /* Color */
-  color: white;
-
-  /* Animation */
-  animation-name: hoverOn;
   animation-duration: 0.2s;
 }
 </style>
