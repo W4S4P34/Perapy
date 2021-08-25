@@ -15,7 +15,7 @@
                     <span class="label">Phone</span>
                     <span class="user-data">0123456789</span>
                 </div>
-                <button class="edit-info">
+                <button class="edit-info" disabled>
                     <i class="fas fa-pen" aria-hidden="true"></i>
                     Edit Information
                 </button>
@@ -38,7 +38,7 @@
                         <p>Local ATM Card / Internet Banking</p>
                     </label>
                 </div>
-                <button class="edit-info">
+                <button class="edit-info" disabled>
                     <i class="fas fa-plus" aria-hidden="true"></i>
                     Add / Choose Card
                 </button>
@@ -58,7 +58,7 @@ export default {
     methods: {
         handleBuy() {
             this.$emit("buy");
-        }
+        },
     }
 }
 </script>

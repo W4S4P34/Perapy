@@ -6,17 +6,13 @@
         <span class="label">Cart Price</span>
         <span class="price">${{ calculateTotal }}</span>
       </div>
-      <div class="cart-price">
-        <span class="label">Shipping Fee</span>
-        <span class="price">${{shippingFee}}</span>
-      </div> 
       <div class="divider"></div>
       <div class="total-price">
         <span class="label">Total</span>
-        <span class="price">${{calculateTotal + shippingFee}}</span>
+        <span class="price">${{calculateTotal}}</span>
       </div>
     </div>
-    <button type="submit" class="checkout-button" @click="navigate">
+    <button type="submit" class="checkout-button" @click="navigate" :disabled="cartList.length === 0">
       Checkout
     </button>
   </div>
@@ -28,11 +24,6 @@ export default {
     navigate() {
       this.$router.push({ name: "Shipping" });
     },
-  },
-  data() {
-    return {
-      shippingFee: 1,
-    };
   },
   computed: {
     cartList() {

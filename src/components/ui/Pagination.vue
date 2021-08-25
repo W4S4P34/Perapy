@@ -162,7 +162,7 @@ export default {
   @apply space-x-10;
 
   /* Margin */
-  @apply mt-5 mb-10;
+  @apply mt-20 mb-10;
 }
 
 .pagination-number button {

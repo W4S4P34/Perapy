@@ -42,29 +42,50 @@ export default {
   width: 450px;
   height: 250px;
 
-  /* Margin
-  @apply mx-10 my-16; */
+  /* Margin */
+  @apply mx-10 my-16;
+
+  /* Padding */
+  @apply px-7;
 
   /* Cusor */
   @apply cursor-pointer;
-
   @apply flex flex-row;
+
+  /* Border */
+  @apply border border-white;
+  border-radius: 25px;
+
+  /* Transition */
+  @apply transition duration-300 ease-in-out;
+}
+
+.product-item:hover {
+  /* Animation */
+  @apply border border-gray-100;
+  transform: translate(-4px, -4px);
+  box-shadow: 7px 7px 10px 0px rgb(201, 201, 201);
+
 }
 
 .product-img {
-  /* Size */
-  width: 200px;
-  height: 250px;
+  /* Display: Image content */
+  @apply object-cover;
 
-  border-radius: 100px;
+  /* Shape */
+  @apply rounded-full;
+
+  /* Layout */
+  @apply w-36 h-52;
+  @apply self-center;
 }
 
 .product-info {
   /* Display */
   @apply block;
 
-  /* Margin */
-  @apply ml-4 my-auto;
+  /* Padding */
+  @apply px-4 py-10;
 
   /* Font */
   font-family: "Quicksand", sans-serif;
@@ -74,6 +95,7 @@ export default {
   /* Font */
   @apply text-lg font-bold;
 
+  /* Margin */
   @apply mb-2;
 }
 

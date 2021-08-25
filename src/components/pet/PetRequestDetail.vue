@@ -89,17 +89,41 @@
         See other candidates
       </div>
       <div class="pet-detail-suggestion-content">
-        <div class="pet-detail-suggestion-content-1">
-          <img src="..\..\assets\pet-images\pet-1.jpg" alt="" />
-          <p>Mary CharlotteWithAReallyLongLongLongName</p>
+        <div class="pet-detail-suggestion-content-1" @click="navigate(suggestion[0].id)">
+          <img :src="suggestion[0].thumbnail" alt="" />
+          <div class="pet-detail-suggestion-info">
+            <p> {{ suggestion[0].name }} </p>
+            <p>
+              <span>
+                <div class="icon"> <i class="fas fa-phone-alt"></i> </div>
+              </span>
+              {{ suggestion[0].sen.phone }} 
+            </p>
+          </div>
         </div>
-        <div class="pet-detail-suggestion-content-2">
-          <img src="..\..\assets\pet-images\pet-1.jpg" alt="" />
-          <p>Mary Charlotte</p>
+        <div class="pet-detail-suggestion-content-2" @click="navigate(suggestion[1].id)">
+          <img :src="suggestion[1].thumbnail" alt="" />
+          <div class="pet-detail-suggestion-info">
+            <p> {{ suggestion[1].name }} </p>
+            <p>
+              <span>
+                <div class="icon"> <i class="fas fa-phone-alt"></i> </div>
+              </span>
+              {{ suggestion[1].sen.phone }} 
+            </p>
+          </div>
         </div>
-        <div class="pet-detail-suggestion-content-3">
-          <img src="..\..\assets\pet-images\pet-1.jpg" alt="" />
-          <p>Mary Charlotte</p>
+        <div class="pet-detail-suggestion-content-3" @click="navigate(suggestion[2].id)">
+          <img :src="suggestion[2].thumbnail" alt="" />
+          <div class="pet-detail-suggestion-info">
+            <p> {{ suggestion[2].name }} </p>
+            <p>
+              <span>
+                <div class="icon"> <i class="fas fa-phone-alt"></i> </div>
+              </span>
+              {{ suggestion[2].sen.phone }} 
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -111,6 +135,8 @@ import Heading from "@/components/reuseable-component/Heading";
 import PetRequestFeedbackList from "@/components/pet/PetRequestFeedbackList";
 import PetRequestDescription from "@/components/pet/PetRequestDescription";
 import Pagination from "@/components/ui/Pagination";
+import petData from "@/assets/data/pet_info.json"
+
 export default {
   name: "PetRequestDetail",
   props: ["info"],
@@ -131,6 +157,7 @@ export default {
       total: 0,
       totalPages: 0,
       pageOfFeedbacks: [],
+      suggestion: []
     };
   },
   created() {
@@ -138,6 +165,7 @@ export default {
     this.perPage = 6;
     this.total = this.data.feedbacks.length;
     this.paginator(this.feedbackList, this.currentPage, this.perPage);
+    this.suggestion = this.suggestionList();
   },
   computed: {
     feedback() {
@@ -175,6 +203,26 @@ export default {
     },
     requestPet() {
       this.$emit('request');
+    },
+    suggestionList() {
+      let returnedArray = [],
+        chosenNumber = 0;
+      do {
+        let pet = petData[Math.floor(Math.random() * 49)];
+          if (pet) {
+            let duplicateProd = returnedArray.filter(
+              (each) => each.id === pet.id
+            );
+          if (pet.id !== this.data.id && duplicateProd.length === 0) {
+            returnedArray.push(pet);
+            chosenNumber++;
+          }
+        }
+      } while (chosenNumber < 3);
+      return returnedArray;
+    },
+    navigate(petId) {
+      this.$router.push({name: 'PetDetail', params: {petId: petId} })
     }
   },
 };
@@ -429,6 +477,54 @@ textarea::-webkit-scrollbar-thumb {
 
   /* Alignment */
   @apply text-left;
+
+  /* Animation */
+  @apply transition duration-700 ease-in-out;
+}
+
+.pet-detail-suggestion-content-1 img,
+.pet-detail-suggestion-content-2 img,
+.pet-detail-suggestion-content-3 img {
+  /* Animation */
+  @apply transition duration-700 ease-in-out;
+}
+
+.pet-detail-suggestion-content-1:hover img,
+.pet-detail-suggestion-content-2:hover img,
+.pet-detail-suggestion-content-3:hover img {
+  /* Animation */
+  box-shadow: 7px 7px 5px 0px rgb(201, 201, 201);
+}
+
+.pet-detail-suggestion-content-1:hover,
+.pet-detail-suggestion-content-2:hover,
+.pet-detail-suggestion-content-3:hover {
+  /* Animation */
+  transform: translate(-2px, -2px);
+
+  /* Cursor */
+  cursor: pointer;
+}
+
+.pet-detail-suggestion-info {
+  /* Display */
+  @apply flex flex-col;
+
+  /* Layout */
+  @apply justify-center;
+  @apply content-start;
+  @apply items-start;
+
+  @apply gap-y-2;
+
+  @apply w-full;
+
+  @apply text-left;
+}
+
+.pet-detail-suggestion-info .icon {
+  /* Margin */
+  @apply mr-2;
 }
 
 .pet-detail-suggestion-content-1 img,

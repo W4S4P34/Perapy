@@ -98,6 +98,14 @@ export default {
   @apply relative;
 }
 
+.product-name {
+  /* Font style */
+  @apply font-bold text-4xl;
+
+  /* Margin */
+  @apply my-4;
+}
+
 .product-img {
   /* Size */
   width: 540px;
@@ -113,14 +121,6 @@ export default {
 
   /* Font */
   font-family: "Quicksand", sans-serif;
-}
-
-.product-name {
-  /* Font style */
-  @apply font-bold text-4xl;
-
-  /* Margin */
-  @apply my-4;
 }
 
 .product-description {

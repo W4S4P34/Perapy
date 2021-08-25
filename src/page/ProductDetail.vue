@@ -110,15 +110,16 @@ export default {
       let returnedArray = [],
         chosenNumber = 0;
       do {
-        let product = productData[Math.floor(Math.random() * 50)],
-          duplicateProd = returnedArray.filter(
+        let product = productData[Math.floor(Math.random() * 50)];
+        if (product) {
+          let duplicateProd = returnedArray.filter(
             (each) => each.id === product.id
           );
-        if (product.id === this.data.id && duplicateProd.length !== 0) {
-          continue;
+          if (product.id !== this.data.id && duplicateProd.length === 0) {
+            returnedArray.push(product);
+            chosenNumber++;
+          }
         }
-        returnedArray.push(product);
-        chosenNumber++;
       } while (chosenNumber < 3);
       return returnedArray;
     },
@@ -165,7 +166,6 @@ export default {
       this.total = items.length;
       this.totalPages = total_pages;
       this.pageOfFeedbacks = paginatedItems;
-      // console.log(this.pageOfFeedbacks);
     },
   },
 };

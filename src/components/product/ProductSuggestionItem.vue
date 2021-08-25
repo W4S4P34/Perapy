@@ -49,6 +49,27 @@ export default {
   @apply cursor-pointer;
 
   @apply flex flex-row;
+
+  /* Animation */
+  @apply transition duration-700 ease-in-out;
+}
+
+.product-item img {
+  /* Animation */
+  @apply transition duration-700 ease-in-out;
+}
+
+.product-item:hover {
+   /* Animation */
+  transform: translate(-3px, -3px);
+
+  /* Cursor */
+  cursor: pointer;
+}
+
+.product-item:hover img {
+   /* Animation */
+  box-shadow: 7px 7px 10px grey;
 }
 
 .product-img {
