@@ -2,29 +2,42 @@
   <footer class="footer">
     <div class="footer-container">
       <div class="dev-info">
-        <img
-          class="web-logo"
-          src="https://avatars.githubusercontent.com/u/47271466?s=48&v=4"
-        />
+        <img class="web-logo" src="../../assets/icons/logo.png" />
         <h1 class="web-name">Perapy</h1>
-        <div class="web-credit">@FitHCMUS - 18KTPM - Group06</div>
       </div>
       <div class="dev-links">
-        <a class="terms-of-service">Terms of service</a>
-        <a class="liscense">Liscense</a>
-        <a><i class="fab fa-facebook-f"/></a>
-        <a><i class="fab fa-google"/></a>
-        <a><i class="fab fa-twitter"/></a>
-        <a><i class="fab fa-slack"/></a>
-        <a><i class="fas fa-phone-alt"/></a>
+        <div class="subject-info">
+          <div>VNUHCM - University of Science</div>
+          <div>FIT - Group 06</div>
+          <div>CSC13112 - User Interface Design</div>
+        </div>
+        <div class="contact-info">
+          <div class="contact-container">
+            <i class="fas fa-map-marker-alt location-icon" />
+            <div class="contact-content">
+              227 Nguyen Van Cu St., Ward 4, District 5, Ho Chi Minh City,
+              Vietnam
+            </div>
+          </div>
+          <div class="contact-container">
+            <i class="fas fa-envelope email-icon" />
+            <div class="contact-content">
+              perapy@hcmus.edu.vn
+            </div>
+          </div>
+          <div class="contact-container">
+            <i class="fas fa-phone-alt tel-icon" />
+            <div class="contact-content">
+              (+84) 77976534
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </footer>
 </template>
 
-
 <script>
-
 export default {
   name: "Footer",
   data() {
@@ -33,12 +46,9 @@ export default {
     };
   },
 };
-
 </script>
 
-
 <style scoped>
-
 footer {
   /* Background */
   background-image: linear-gradient(
@@ -49,6 +59,7 @@ footer {
 
   /* Sizing */
   @apply w-full;
+  height: 170px;
 
   /* Positioning */
   @apply absolute;
@@ -61,6 +72,7 @@ footer {
   /* Margin */
   @apply mx-12;
 
+  height: inherit;
   /* Flex */
   @apply flex flex-row justify-between;
 }
@@ -68,7 +80,6 @@ footer {
 .dev-info {
   /* Grid */
   @apply grid grid-cols-2;
-  grid-template-rows: 68px 20px;
 
   /* Centering */
   @apply items-center;
@@ -79,7 +90,8 @@ footer {
 
 .web-logo {
   /* Sizing */
-  @apply w-16 h-16;
+  width: 86px;
+  height: 86px;
 
   /* Alignment */
   @apply self-center justify-self-center;
@@ -90,75 +102,77 @@ footer {
   @apply self-center;
 
   /* Text */
-  @apply text-left text-2xl;
+  @apply text-left text-4xl;
 
   /* Font */
   font-family: "Quicksand", sans-serif;
   @apply font-bold;
 }
 
-.web-credit {
-  /* Grid */
-  @apply col-span-2;
-
-  /* Text  */
-  font-family: "Open Sans", sans-serif;
-  @apply text-xs;
-
-  /* Margin */
-  @apply mt-4;
-}
-
 .dev-links {
-  /* Flex */
-  @apply flex flex-row justify-between items-center;
+  /* Grid */
+  display: grid;
+  grid-template-columns: 270px 270px;
+  @apply gap-x-10;
 
+  /* Centering */
+  @apply items-center;
 
   /* Font */
   font-family: "Quicksand", sans-serif;
-  @apply text-lg font-bold;
+  @apply text-sm font-semibold;
 }
 
-@keyframes hoverOn {
-  from {
-    color: black;
-  }
-  to {
-    color: white;
-  }
+.contact-info {
+  /* Flex */
+  @apply grid grid-rows-3;
 }
 
-@keyframes hoverOff {
-  from {
-    color: white;
-  }
-  to {
-    color: black;
-  }
+.contact-container {
+  @apply flex flex-row;
 }
 
-.dev-links a {
+.contact-content {
+  /* Wrap */
+  @apply break-words;
+
+  /* Centering */
+  @apply self-end;
+}
+
+.location-icon {
+  /* Sizing */
+  width: 15px;
+  height: 20px;
+
   /* Margin */
-  @apply mr-6;
+  @apply mr-2;
 
-  /* Alignment */
+  /* Centering */
   @apply self-center;
-
-  /* Animation */
-  animation-name: hoverOff;
-  animation-duration: 0.2s;
 }
 
-.dev-links a:hover {
-  /* Animation */
-  animation-name: hoverOn;
-  animation-duration: 0.2s;
+.email-icon {
+  /* Sizing */
+  width: 15px;
+  height: 15px;
 
-  /* Color */
-  color: white;
+  /* Margin */
+  @apply mr-2;
 
-  /* Cursor */
-  @apply cursor-pointer;
+  /* Centering */
+  @apply self-end;
 }
 
+.tel-icon {
+  /* Sizing */
+  width: 15px;
+  height: 15px;
+
+  /* Margin */
+  @apply mr-2;
+
+  /* Centering */
+  @apply self-end;
+}
 </style>
