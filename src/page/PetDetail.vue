@@ -1,19 +1,25 @@
 <template>
   <div>
-    <PetRequestDetail :info="data"/>
+    <Modal v-if="isOpen" @confirm="handlePetModal" :hideCancelBtn="true"
+      >Your request has been sent, please wait for response from volunteer!</Modal
+    >
+    <PetRequestDetail :info="data" @request="handlePetModal" />
   </div>
 </template>
 
 <script>
 import PetRequestDetail from "@/components/pet/PetRequestDetail.vue";
 import petInfo from "@/assets/data/pet_info.json";
+import Modal from "@/components/reuseable-component/Modal.vue";
+
 export default {
   name: "PetDetail",
   components: {
     PetRequestDetail,
+    Modal,
   },
   data: function() {
-    return { data: null }
+    return { data: null, isOpen: false };
   },
   created: function() {
     this.fetchData();
@@ -32,8 +38,11 @@ export default {
         }
       });
       this.data = res;
-    }
-  }
+    },
+    handlePetModal() {
+      this.isOpen = !this.isOpen;
+    },
+  },
 };
 </script>
 

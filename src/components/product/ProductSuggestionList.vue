@@ -1,6 +1,6 @@
 <template>
   <div class="product-list">
-    <div v-for="item in productList" v-bind:key="item.id">
+    <div v-for="item in list" v-bind:key="item.id">
       <ProductSuggestionItem v-bind:data="item" />
     </div>
   </div>
@@ -13,33 +13,7 @@ export default {
   components: {
     ProductSuggestionItem,
   },
-  data() {
-    return {
-      productList: [
-        {
-          id: "p1",
-          name: "Bicycle",
-          description: "A beautiful bicycle",
-          rating: 4,
-          price: 64,
-        },
-        {
-          id: "p2",
-          name: "Disc",
-          description: "A beautiful disc",
-          rating: 4,
-          price: 645,
-        },
-        {
-          id: "p3",
-          name: "T-bag",
-          description: "A beautiful t-bag",
-          rating: 4,
-          price: 68,
-        },
-      ],
-    };
-  },
+  props: ['list'],
 };
 </script>
 

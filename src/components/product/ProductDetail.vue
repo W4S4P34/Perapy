@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Modal v-if="isOpen" @closingModal="closingModal"
+    <Modal v-if="isOpen" @confirm="closingModal" :hideCancelBtn="true"
       >Product has been added into your cart.</Modal
     >
     <div class="product-detail-container">

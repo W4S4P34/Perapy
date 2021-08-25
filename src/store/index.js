@@ -77,6 +77,12 @@ const store = createStore({
                 existingProduct.totalPrice = Math.round((existingProduct.totalPrice - existingProduct.price) * 100) / 100;
             }
             state.changed = true;
+        },
+
+        clearCart(state) {
+            state.cartList = [];
+            state.changed = false;
+            state.totalQuantity = 0;
         }
 
     },
@@ -97,6 +103,9 @@ const store = createStore({
 
         decreaseProductQuantity(context, productId) {
             context.commit('decreaseProductQuantity', productId);
+        },
+        clearCart(context) {
+            context.commit('clearCart');
         }
     }
 

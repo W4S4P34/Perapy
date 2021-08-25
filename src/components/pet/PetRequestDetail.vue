@@ -37,7 +37,7 @@
             placeholder="Send volunteer request here..."
           />
           <div class="pet-detail-data-request-misc">
-            <button class="pet-detail-data-request-button" type="button">
+            <button class="pet-detail-data-request-button" type="button" @click="requestPet">
               Request
             </button>
           </div>
@@ -174,6 +174,9 @@ export default {
       this.pageOfFeedbacks = paginatedItems;
       console.log(this.pageOfFeedbacks);
     },
+    requestPet() {
+      this.$emit('request');
+    }
   },
 };
 </script>

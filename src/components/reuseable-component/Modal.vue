@@ -66,8 +66,15 @@
               </div>
             </div>
             <div class=" px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-              <button type="button" class="confirm-btn" @click="emitCloseEvent">
+              <button
+                type="button"
+                class="confirm-btn"
+                @click="emitConfirmEvent"
+              >
                 Got it
+              </button>
+              <button type="button" class="cancel-btn" @click="emitCloseEvent" :class="{'invisible': hideCancelBtn === true}">
+                Cancel
               </button>
             </div>
           </div>
@@ -90,6 +97,7 @@ import { ExclamationCircleIcon } from "@heroicons/vue/solid";
 
 export default {
   name: "Modal",
+  props: ['hideCancelBtn'],
   components: {
     Dialog,
     DialogOverlay,
@@ -106,10 +114,13 @@ export default {
     };
   },
   methods: {
+    emitConfirmEvent() {
+      this.$emit("confirm");
+    },
     emitCloseEvent() {
-      this.$emit('closingModal');
-    }
-  }
+      this.$emit("close");
+    },
+  },
 };
 </script>
 
@@ -129,7 +140,6 @@ export default {
 
   /* Responsive */
   @apply sm:mx-0 sm:h-10 sm:w-10;
-
 }
 .modal-icon {
   /* Size */
@@ -166,5 +176,37 @@ export default {
 
   /* Responsive */
   @apply sm:ml-3 sm:w-auto sm:text-sm;
+}
+
+.cancel-btn {
+  /* Sizing */
+  @apply w-full;
+
+  /* Flex */
+  @apply inline-flex justify-center;
+
+  /* Rounding */
+  @apply rounded-md;
+
+  /* Shadow */
+  @apply shadow-sm;
+
+  /* Padding */
+  @apply px-4 py-2;
+
+  /* Background */
+  @apply bg-white;
+
+  /* Font */
+  @apply text-base font-medium text-gray-700;
+
+  /* Margin */
+  @apply mt-3;
+
+  /* Border */
+  @apply border border-gray-300;
+
+  /* Responsive */
+  @apply sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm;
 }
 </style>

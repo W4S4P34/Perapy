@@ -50,7 +50,7 @@
     </div>
 
     <Heading>You might Also like</Heading>
-    <Container><ProductSuggestionList /></Container>
+    <Container><ProductSuggestionList :list="suggestionList"/></Container>
     <CartButton />
   </div>
 </template>
@@ -105,6 +105,19 @@ export default {
     },
     tabs() {
       return "tabs";
+    },
+    suggestionList() {
+      let returnedArray = [],
+        chosenNumber = 0;
+      do {
+        let product = productData[Math.floor(Math.random() * 50)];
+        if (product.id === this.data.id) {
+          continue;
+        }
+        returnedArray.push(product);
+        chosenNumber++;
+      } while (chosenNumber < 3);
+      return returnedArray;
     },
   },
   watch: {

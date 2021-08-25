@@ -25,14 +25,14 @@
             <h1 class="heading">Payment Method</h1>
             <div class="shipping-content">
                 <div class="payment-info">
-                    <input type="radio" id="cashChoice" name="payment_method" value="cash">
+                    <input type="radio" id="cashChoice" name="payment_method" value="cash" checked="checked" class="radio-btn">
                     <label for="cashChoice">
                         <img src="@/assets/icons/COD.png" alt="">
                         <p>Cash on delivery</p>
                     </label>
                 </div>
                 <div class="payment-info">
-                    <input type="radio" id="bankingChoice" name="payment_method" value="banking">
+                    <input type="radio" id="bankingChoice" name="payment_method" value="banking" class="radio-btn">
                     <label for="bankingChoice">
                         <img src="@/assets/icons/ATM.png" alt="">
                         <p>Local ATM Card / Internet Banking</p>
@@ -48,13 +48,18 @@
             <input type="checkbox">
             Export receipt
         </div>
-        <button type="submit" class="buy-button">Buy</button>
+        <button type="submit" class="buy-button" @click="handleBuy">Buy</button>
     </div>
 </template>
 
 <script>
 export default {
-    
+    name: "ShippingForm",
+    methods: {
+        handleBuy() {
+            this.$emit("buy");
+        }
+    }
 }
 </script>
 
@@ -174,9 +179,10 @@ label {
     @apply ml-4;
 }
 
-input[type=radio] {
+.radio-btn {
     /* Size */
     @apply w-6 h-6;
+
 }
 
 .payment-info p {
@@ -264,4 +270,5 @@ input[type=checkbox] {
     /* Opacity */
     opacity: 0;
 }
+
 </style>

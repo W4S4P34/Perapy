@@ -6,7 +6,7 @@
       </div>
     </div>
     <div v-else class="inner-alt">
-      <img src="../../assets/empty_state.png"/>
+      <img src="@/assets/empty_state.png"/>
     </div>
   </div>
 </template>
@@ -73,10 +73,6 @@ export default {
 .inner-alt {
   /* Margin */
   @apply mt-20 ml-20;
-
-  /* Text */
-  @apply text-4xl font-semibold;
-  color: rgba(217, 86, 86, 1);
 
   /* Size */
   width: 500px;
