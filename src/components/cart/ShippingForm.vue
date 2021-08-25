@@ -21,28 +21,32 @@
                 </button>
             </div>
         </div>
-        <div class="shipping-info">
+        <form class="shipping-info">
             <h1 class="heading">Payment Method</h1>
             <div class="shipping-content">
                 <div class="payment-info">
-                    <i class="far fa-circle"></i>
-                    <img src="@/assets/icons/COD.png" alt="">
-                    <p>Cash on delivery</p>
+                    <input type="radio" id="cashChoice" name="payment_method" value="cash">
+                    <label for="cashChoice">
+                        <img src="@/assets/icons/COD.png" alt="">
+                        <p>Cash on delivery</p>
+                    </label>
                 </div>
                 <div class="payment-info">
-                    <i class="far fa-dot-circle"></i>
-                    <img src="@/assets/icons/ATM.png" alt="">
-                    <p>Local ATM Card / Internet Banking</p>
+                    <input type="radio" id="bankingChoice" name="payment_method" value="banking">
+                    <label for="bankingChoice">
+                        <img src="@/assets/icons/ATM.png" alt="">
+                        <p>Local ATM Card / Internet Banking</p>
+                    </label>
                 </div>
                 <button class="edit-info">
                     <i class="fas fa-plus" aria-hidden="true"></i>
                     Add / Choose Card
                 </button>
             </div>
-        </div>
+        </form>
         <div class="export-receipt">
-            <input type="checkbox" class="hide">
-            <i class="checkbox far fa-square"></i>Export receipt
+            <input type="checkbox">
+            Export receipt
         </div>
         <button type="submit" class="buy-button">Buy</button>
     </div>
@@ -154,6 +158,11 @@ export default {
     @apply mb-8;
 }
 
+label {
+    /* Flex */
+    @apply flex items-center;
+}
+
 .payment-info img {
     /* Display: Image content */
     @apply object-contain;
@@ -165,6 +174,11 @@ export default {
     @apply ml-4;
 }
 
+input[type=radio] {
+    /* Size */
+    @apply w-6 h-6;
+}
+
 .payment-info p {
     /* Styles */
     @apply font-bold;
@@ -174,6 +188,9 @@ export default {
 }
 
 .export-receipt {
+    /* Flex */
+    @apply flex items-center;
+
     /* Margin */
     @apply mb-8;
 
@@ -182,14 +199,12 @@ export default {
     @apply text-2xl font-bold;
 }
 
-.checkbox {
-    /* Margin */
-    @apply mr-6;
-}
+input[type=checkbox] {
+    /* Size */
+    @apply w-6 h-6;
 
-.hide {
-    /* Display */
-    display: none;
+    /* Margin */
+    @apply mr-4;
 }
 
 .buy-button {

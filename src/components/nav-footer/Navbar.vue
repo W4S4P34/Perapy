@@ -3,7 +3,10 @@
     <nav class="navbar">
       <div class="header-container">
         <div class="logo">
-          <h1>Perapy</h1>
+          <img
+            class="web-logo"
+            src="@/assets/icons/logo.png"
+          />
         </div>
         <div class="topics">
           <router-link to="/">Home</router-link>
@@ -68,6 +71,17 @@ export default {
 
   /* Font */
   font-family: "Quicksand", sans-serif;
+}
+
+.web-logo {
+  /* Sizing */
+  @apply w-10 h-10;
+
+  /* Alignment */
+  @apply self-center justify-self-center;
+
+  /* Margin */
+  @apply ml-1;
 }
 
 .topics {
