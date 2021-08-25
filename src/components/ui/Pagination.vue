@@ -1,108 +1,201 @@
+/* https://codepen.io/alligatorio/pen/zWvpRp */
 <template>
-    <div class="pagination-container">
-        <ul class="items">
-            <li>
-                <button class="change-page-button change-page-button-inactive">
-                    <i class="fa fa-angle-left"></i>
-                </button>
-            </li>
-            <li>
-                <button class="page-button current-page">
-                    1
-                </button>
-            </li>
-            <li>
-                <button class="page-button">
-                    2
-                </button>
-            </li>
-            <li>
-                <button class="page-button">
-                    3
-                </button>
-            </li>
-            <li>
-                <button class="change-page-button">
-                    <i class="fa fa-angle-right"></i>
-                </button>
-            </li>
-        </ul>
-    </div>
+  <div>
+    <ul class="pagination">
+      <li class="pagination-item">
+        <button
+          type="button"
+          @click="onClickFirstPage"
+          :disabled="isInFirstPage"
+          aria-label="Go to first page"
+        >
+          <i class="fas fa-angle-double-left"/>
+        </button>
+      </li>
+
+      <li class="pagination-item">
+        <button
+          type="button"
+          @click="onClickPreviousPage"
+          :disabled="isInFirstPage"
+          aria-label="Go to previous page"
+        >
+          <i class="fas fa-angle-left"/>
+        </button>
+      </li>
+
+      <li v-for="page in pages" class="pagination-number" :key="page.name">
+        <button
+          type="button"
+          @click="onClickPage(page.name)"
+          :disabled="page.isDisabled"
+          :class="{ active: isPageActive(page.name) }"
+          :aria-label="`Go to page number ${page.name}`"
+        >
+          {{ page.name }}
+        </button>
+      </li>
+
+      <li class="pagination-item">
+        <button
+          type="button"
+          @click="onClickNextPage"
+          :disabled="isInLastPage"
+          aria-label="Go to next page"
+        >
+          <i class="fas fa-angle-right"/>
+        </button>
+      </li>
+
+      <li class="pagination-item">
+        <button
+          type="button"
+          @click="onClickLastPage"
+          :disabled="isInLastPage"
+          aria-label="Go to last page"
+        >
+          <i class="fas fa-angle-double-right"/>
+        </button>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
 export default {
-    
-}
+  name: "Pagination",
+  props: {
+    maxVisibleButtons: {
+      type: Number,
+      required: false,
+      default: 3,
+    },
+    totalPages: {
+      type: Number,
+      required: true,
+    },
+    total: {
+      type: Number,
+      required: true,
+    },
+    perPage: {
+      type: Number,
+      required: true,
+    },
+    currentPage: {
+      type: Number,
+      required: true,
+    },
+  },
+  computed: {
+    startPage() {
+      if (this.currentPage === 1) {
+        return 1;
+      }
+
+      if (this.currentPage === this.totalPages) {
+        return this.totalPages - this.maxVisibleButtons + 1;
+      }
+
+      return this.currentPage - 1;
+    },
+    endPage() {
+      return Math.min(
+        this.startPage + this.maxVisibleButtons - 1,
+        this.totalPages
+      );
+    },
+    pages() {
+      const range = [];
+
+      for (let i = this.startPage; i <= this.endPage; i += 1) {
+        range.push({
+          name: i,
+          isDisabled: i === this.currentPage,
+        });
+      }
+
+      return range;
+    },
+    isInFirstPage() {
+      return this.currentPage === 1;
+    },
+    isInLastPage() {
+      return this.currentPage === this.totalPages;
+    },
+  },
+  methods: {
+    onClickFirstPage() {
+      this.$emit("pagechanged", 1);
+    },
+    onClickPreviousPage() {
+      this.$emit("pagechanged", this.currentPage - 1);
+    },
+    onClickPage(page) {
+      this.$emit("pagechanged", page);
+    },
+    onClickNextPage() {
+      this.$emit("pagechanged", this.currentPage + 1);
+    },
+    onClickLastPage() {
+      this.$emit("pagechanged", this.totalPages);
+    },
+    isPageActive(page) {
+      return this.currentPage === page;
+    },
+  },
+};
 </script>
 
 <style scoped>
-.pagination-container {
-    /* Flex */
-    @apply flex justify-center;
+.pagination {
+  /* Display */
+  @apply flex;
 
-    /* Margin */
-    @apply my-4;
+  /* Layout */
+  @apply w-full;
 
-    /* Font */
-    font-family: "Quicksand", sans-serif;
+  /* Items */
+  @apply justify-center;
+
+  /* Spacing */
+  @apply space-x-10;
+
+  /* Margin */
+  @apply mt-5 mb-10;
 }
 
-.items {
-    /* Flex */
-    @apply flex;
+.pagination-number button {
+  /* Layout */
+  min-width: 40px;
 }
 
-.page-button {
-    /* Padding */
-    @apply px-2;
+.pagination-item button,
+.pagination-number button {
+  /* Layout */
+  @apply w-max;
+  
+  /* Font */
+  font-family: 'Quicksand', sans-serif;
+  @apply text-xl;
+  @apply font-semibold;
 
-    /* Text */
-    @apply bg-white;
+  /* Style */
+  @apply rounded-xl;
 
-    /* Border */
-    @apply border border-black rounded-md;
-
-    /* Margin */
-    @apply mx-1;
-
-    /* Font weight */
-    @apply font-extrabold;
+  /* Padding */
+  @apply px-2 py-1;
 }
 
-.change-page-button {
-    /* Padding */
-    @apply px-2;
-}
-
-.change-page-button-inactive {
-    /* Color */
-    @apply text-gray-500;
-}
-
-.current-page {
-    /* Background */
-    background-image: linear-gradient(
-        to right,
-        rgba(136, 96, 208, 0.5), 
-        rgba(86, 128, 233, 0.5)
-    );
-}
-
-.page-button:hover {
-    /* Color */
-    color: black;
-    background-color: lightgray;
-
-    /* Animation */
-    animation-duration: 0.2s;
-}
-
-.change-page-button:hover{
-    /* Color */
-    color: gray;
-
-    /* Animation */
-    animation-duration: 0.2s;
+.active {
+  /* Background */
+  background-image: linear-gradient(
+    to right,
+    rgba(136, 96, 208, 0.5),
+    rgba(86, 128, 233, 0.5)
+  );
+  
+  /* Font */
+  @apply text-white;
 }
 </style>

@@ -17,15 +17,15 @@
         <div class="pet-detail-data-contact-information">
           <div class="pet-detail-data-contact-owner">
             <img src="..\..\assets\icons\patient.png" alt="" />
-            <p> {{ data.sen.name }} </p>
+            <p>{{ data.sen.name }}</p>
           </div>
           <div class="pet-detail-data-contact-email">
             <img src="..\..\assets\icons\email.png" alt="" />
-            <p> {{ data.sen.email }} </p>
+            <p>{{ data.sen.email }}</p>
           </div>
           <div class="pet-detail-data-contact-phone">
             <img src="..\..\assets\icons\phone.png" alt="" />
-            <p> {{ data.sen.phone }} </p>
+            <p>{{ data.sen.phone }}</p>
           </div>
         </div>
 
@@ -68,10 +68,22 @@
       </div>
 
       <div v-if="isFeedbackActive">
-        <PetRequestFeedbackList :feedbacks="data.feedbacks"/>
+        <PetRequestFeedbackList :feedbacks="pageOfFeedbacks" />
+        <Pagination
+          :total-pages="totalPages"
+          :total="total"
+          :per-page="perPage"
+          :current-page="currentPage"
+          @pagechanged="onPageChange"
+        />
       </div>
       <div v-else>
-        <PetRequestDescription :info="{ description: data.description, certificates: data.certificate }"/>
+        <PetRequestDescription
+          :info="{
+            description: data.description,
+            certificates: data.certificate,
+          }"
+        />
       </div>
     </div>
 
@@ -101,21 +113,34 @@
 import Heading from "@/components/reuseable-component/Heading";
 import PetRequestFeedbackList from "@/components/pet/PetRequestFeedbackList";
 import PetRequestDescription from "@/components/pet/PetRequestDescription";
-
+import Pagination from "@/components/ui/Pagination";
 export default {
   name: "PetRequestDetail",
-  props: ['info'],
+  props: ["info"],
   components: {
     Heading,
     PetRequestFeedbackList,
     PetRequestDescription,
+    Pagination,
   },
   data() {
     return {
       isFeedbackActive: false,
       isDescriptionActive: true,
-      data: this.info
+      data: this.info,
+      feedbackList: this.info.feedbacks,
+      currentPage: 0,
+      perPage: 0,
+      total: 0,
+      totalPages: 0,
+      pageOfFeedbacks: [],
     };
+  },
+  created() {
+    this.currentPage = 1;
+    this.perPage = 6;
+    this.total = this.data.feedbacks.length;
+    this.paginator(this.feedbackList, this.currentPage, this.perPage);
   },
   computed: {
     feedback() {
@@ -127,14 +152,30 @@ export default {
   },
   methods: {
     feedbackActive() {
-      console.log("Feedback active");
       this.isFeedbackActive = true;
       this.isDescriptionActive = false;
     },
     descriptionActive() {
-      console.log("Details active");
       this.isFeedbackActive = false;
       this.isDescriptionActive = true;
+    },
+    onPageChange(page) {
+      this.currentPage = page;
+      this.paginator(this.feedbackList, this.currentPage, this.perPage);
+    },
+    paginator(items, current_page, per_page_items) {
+      let page = current_page || 1,
+        per_page = per_page_items || 6,
+        offset = (page - 1) * per_page,
+        paginatedItems = items.slice(offset).slice(0, per_page_items),
+        total_pages = Math.ceil(items.length / per_page);
+
+      this.currentPage = page;
+      this.perPage = per_page;
+      this.total = items.length;
+      this.totalPages = total_pages;
+      this.pageOfFeedbacks = paginatedItems;
+      console.log(this.pageOfFeedbacks);
     },
   },
 };

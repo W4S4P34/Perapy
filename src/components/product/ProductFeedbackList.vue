@@ -1,6 +1,6 @@
 <template>
   <div class="list-container">
-    <div v-for="feedback in feedbackList" :key="feedback.id">
+    <div v-for="feedback in info" :key="feedback.id">
       <ProductFeedback :data="{userName: feedback.username, rating: feedback.rating_stars, content: feedback.comment}" />
     </div>
   </div>
@@ -12,11 +12,6 @@ export default {
   components: { ProductFeedback },
   name: "ProductFeedbackList",
   props: ['info'],
-  data() {
-    return {
-      feedbackList: this.info
-    };
-  },
 };
 </script>
 

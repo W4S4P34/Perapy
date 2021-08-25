@@ -1,6 +1,6 @@
 <template>
   <div class="list-container">
-    <div v-for="feedback in feedbackList" :key="feedback.id">
+    <div v-for="feedback in feedbacks" :key="feedback.id">
       <PetRequestFeedback :data="feedback" />
     </div>
   </div>
@@ -14,11 +14,6 @@ export default {
   components: { PetRequestFeedback },
   name: "PetRequestFeedbackList",
   props: ['feedbacks'],
-  data() {
-    return {
-      feedbackList: this.feedbacks
-    };
-  }
 };
 
 </script>

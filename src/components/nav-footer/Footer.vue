@@ -2,7 +2,7 @@
   <footer class="footer">
     <div class="footer-container">
       <div class="dev-info">
-        <img class="web-logo" src="../../assets/icons/logo.png" />
+        <img class="web-logo" src="@/assets/icons/logo.png" />
         <h1 class="web-name">Perapy</h1>
       </div>
       <div class="dev-links">

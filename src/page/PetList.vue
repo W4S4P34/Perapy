@@ -2,7 +2,7 @@
   <div>
     <Searchbar />
     <PetRequestList v-bind:pets="this.pageOfPets" />
-    <pagination
+    <Pagination
       :total-pages="totalPages"
       :total="total"
       :per-page="perPage"
@@ -15,7 +15,7 @@
 <script>
 import PetRequestList from "@/components/pet/PetRequestList.vue";
 import Searchbar from "@/components/ui/Toolbar";
-import Pagination from "@/components/ui/Pagination-2";
+import Pagination from "@/components/ui/Pagination";
 import PetData from "@/assets/data/pet_info.json";
 
 export default {

@@ -29,16 +29,29 @@
         </Heading>
       </div>
       <div v-if="isFeedbackActive">
-        <ProductFeedbackList :info="data.feedbacks" />
+        <ProductFeedbackList v-bind:info="pageOfFeedbacks" />
+        <Pagination
+          :total-pages="totalPages"
+          :total="total"
+          :per-page="perPage"
+          :current-page="currentPage"
+          @pagechanged="onPageChange"
+        />
       </div>
       <div v-else>
-        <ProductDescription :info="{shortDescription: data.short_description, longDescription: data.long_description, ingredients: data.ingredients}" />
+        <ProductDescription
+          :info="{
+            shortDescription: data.short_description,
+            longDescription: data.long_description,
+            ingredients: data.ingredients,
+          }"
+        />
       </div>
     </div>
 
     <Heading>You might Also like</Heading>
     <Container><ProductSuggestionList /></Container>
-    <CartButton/>
+    <CartButton />
   </div>
 </template>
 
@@ -49,6 +62,7 @@ import Heading from "@/components/reuseable-component/Heading";
 import ProductSuggestionList from "@/components/product/ProductSuggestionList";
 import ProductFeedbackList from "@/components/product/ProductFeedbackList";
 import ProductDescription from "@/components/product/ProductDescription";
+import Pagination from "@/components/ui/Pagination";
 import CartButton from "@/components/ui/CartButton";
 import productData from "@/assets/data/product.json";
 
@@ -60,6 +74,7 @@ export default {
     Container,
     ProductSuggestionList,
     ProductFeedbackList,
+    Pagination,
     ProductDescription,
     CartButton,
   },
@@ -67,12 +82,23 @@ export default {
     return {
       isFeedbackActive: false,
       isDescriptionActive: true,
+      feedbackList: [],
       data: null,
+      currentPage: 0,
+      perPage: 0,
+      total: 0,
+      totalPages: 0,
+      pageOfFeedbacks: [],
     };
   },
   created() {
     this.fetchData();
+    this.currentPage = 1;
+    this.perPage = 6;
+    this.total = this.data.feedbacks.length;
+    this.paginator(this.feedbackList, this.currentPage, this.perPage);
   },
+
   computed: {
     feedback() {
       return "feedback";
@@ -86,16 +112,15 @@ export default {
   },
   methods: {
     feedbackActive() {
-      console.log("Feedback active");
       this.isFeedbackActive = true;
       this.isDescriptionActive = false;
     },
     descriptionActive() {
-      console.log("Details active");
       this.isFeedbackActive = false;
       this.isDescriptionActive = true;
     },
     fetchData() {
+      // Get product detail
       let res;
       const fetchedId = this.$route.params.productId;
       productData.forEach((product) => {
@@ -103,7 +128,28 @@ export default {
           res = product;
         }
       });
-      this.data = res;
+      if (res) {
+        this.data = res;
+        this.feedbackList = this.data.feedbacks;
+      }
+    },
+    onPageChange(page) {
+      this.currentPage = page;
+      this.paginator(this.feedbackList, this.currentPage, this.perPage);
+    },
+    paginator(items, current_page, per_page_items) {
+      let page = current_page || 1,
+        per_page = per_page_items || 6,
+        offset = (page - 1) * per_page,
+        paginatedItems = items.slice(offset).slice(0, per_page_items),
+        total_pages = Math.ceil(items.length / per_page);
+
+      this.currentPage = page;
+      this.perPage = per_page;
+      this.total = items.length;
+      this.totalPages = total_pages;
+      this.pageOfFeedbacks = paginatedItems;
+      // console.log(this.pageOfFeedbacks);
     },
   },
 };

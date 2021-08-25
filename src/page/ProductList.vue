@@ -1,8 +1,8 @@
 <template>
   <div>
     <Searchbar />
-    <ProductList v-bind:products="this.pageOfProducts" />
-    <pagination
+    <ProductList v-bind:products="pageOfProducts" />
+    <Pagination
       :total-pages="totalPages"
       :total="total"
       :per-page="perPage"
@@ -16,7 +16,7 @@
 <script>
 import ProductList from "@/components/product/ProductList";
 import Searchbar from "@/components/ui/Toolbar";
-import Pagination from "@/components/ui/Pagination-2";
+import Pagination from "@/components/ui/Pagination";
 import CartButton from "@/components/ui/CartButton";
 import ProductData from "@/assets/data/product.json";
 
